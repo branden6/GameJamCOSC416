@@ -2,34 +2,24 @@ using UnityEngine;
 
 public class Barrel : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Rigidbody rb;
+    [SerializeField]private float speed = 6f;
+
     void Start()
     {
-        GetComponent<Rigidbody>().linearVelocity = new Vector3(6, 0, 0);
+        rb = GetComponent<Rigidbody>();
+        rb.linearVelocity = new Vector3(speed, 0, 0); // Use velocity instead of linearVelocity
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnCollisionEnter(Collision collision)
     {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.name == "barrel")
+        if (collision.gameObject.CompareTag("borderR"))
         {
-            Destroy(other.gameObject);
-        }    
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "borderR")
-        {
-            GetComponent<Rigidbody>().linearVelocity = new Vector3(-6, 0, 0);
+            rb.linearVelocity = new Vector3(-speed, rb.linearVelocity.y, 0); // Reverse X direction
         }
-        if (collision.gameObject.name == "borderL")
+        else if (collision.gameObject.CompareTag("borderL"))
         {
-            GetComponent<Rigidbody>().linearVelocity = new Vector3(6, 0, 0);
+            rb.linearVelocity = new Vector3(speed, rb.linearVelocity.y, 0); // Reverse X direction
         }
     }
 }
