@@ -8,7 +8,6 @@ public class Barrel : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.linearVelocity = new Vector3(speed, 0, 0); // Use velocity instead of linearVelocity
     }
 
     void OnCollisionEnter(Collision collision)
