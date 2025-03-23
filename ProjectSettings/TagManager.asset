@@ -8,6 +8,7 @@ TagManager:
   - borderL
   - barrel
   - platform
+  - ladder
   layers:
   - Default
   - TransparentFX
