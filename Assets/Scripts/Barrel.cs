@@ -21,4 +21,19 @@ public class Barrel : MonoBehaviour
             rb.linearVelocity = new Vector3(speed, rb.linearVelocity.y, 0); // Reverse X direction
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Barrel hit the player!");
+            Player player = other.GetComponent<Player>();
+
+            if (player != null)
+            {
+                player.TakeDamage(1);
+                GameManager.Instance.DestroyBarrel(gameObject);
+            }
+        }
+    }
 }
