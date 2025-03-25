@@ -2432,6 +2432,7 @@ GameObject:
   - component: {fileID: 1909412369}
   - component: {fileID: 1909412370}
   - component: {fileID: 1909412371}
+  - component: {fileID: 1909412372}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -2585,6 +2586,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 0.8
+--- !u!114 &1909412372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909412364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf4af61740de4ed287360401dbdcfec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
+  lives: 3
 --- !u!1001 &1821757778216230062
 PrefabInstance:
   m_ObjectHideFlags: 0
