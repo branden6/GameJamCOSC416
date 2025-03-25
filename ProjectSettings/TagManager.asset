@@ -9,6 +9,7 @@ TagManager:
   - barrel
   - platform
   - ladder
+  - ground
   layers:
   - Default
   - TransparentFX
