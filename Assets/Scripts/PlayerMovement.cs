@@ -4,8 +4,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private bool midJump = false;
     private Rigidbody rb;
-    [SerializeField]private float speed = 5f;
-    [SerializeField]private float jumpForce = 6f;
+    [SerializeField]private float speed = 1.25f;
+    [SerializeField]private float jumpForce = 2.5f;
 
     void Start()
     {
