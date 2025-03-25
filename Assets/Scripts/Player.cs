@@ -6,7 +6,14 @@ public class Player : MonoBehaviour
     public int maxHealth = 3;
     public int currentHealth;
     public int lives = 3;
+
+    [Header("HUD Interact")]
     public HUDManager hudManager;
+
+    [Header("Clone Summoning")]
+    public GameObject neutralClonePrefab;
+    public Transform cloneSpawnPoint;
+    private GameObject activeNeutralClone;
 
     [Header("Movement Settings")]
     [SerializeField] private float speed = 1.25f;
@@ -52,7 +59,13 @@ private void Start()
             midJump = true;
             input.ResetJump();
         }
+
+        if (Input.GetKeyDown(KeyCode.E) && activeNeutralClone == null)
+        {
+            SummonNeutralClone();
+        }
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -94,4 +107,19 @@ private void Start()
         currentHealth = maxHealth;
         Debug.Log("Player respawned.");
     }
+
+    private void SummonNeutralClone()
+    {
+        GameObject clone = Instantiate(neutralClonePrefab, cloneSpawnPoint.position, Quaternion.identity);
+        activeNeutralClone = clone;
+
+        clone.GetComponent<NeutralClone>().playerScript = this;
+    }
+
+    public void ClearNeutralClone()
+    {
+        activeNeutralClone = null;
+    }
+
+
 }
