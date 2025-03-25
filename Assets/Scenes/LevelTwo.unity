@@ -1103,7 +1103,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1171978226658551725, guid: b6b48e87516ef429585c5c62bedead6f, type: 3}
       propertyPath: m_Name
-      value: Bottom Girder
+      value: Bottom Girder Far Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824045352620645791, guid: b6b48e87516ef429585c5c62bedead6f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1824045352620645791, guid: b6b48e87516ef429585c5c62bedead6f, type: 3}
       propertyPath: m_LocalPosition.x
