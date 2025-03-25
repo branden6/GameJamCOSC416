@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 125488190}
   - component: {fileID: 125488189}
   - component: {fileID: 125488188}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,6 +381,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1fb6ca230594047989033a59863f13c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5603568263708238521, guid: 1fb6ca230594047989033a59863f13c4, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5603568263708238521, guid: 1fb6ca230594047989033a59863f13c4, type: 3}
@@ -550,8 +554,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.009756204, y: 0.0010274827, z: 0.038113732}
-  m_Center: {x: -0.0000000048428777, y: -0.0000007151161, z: 0.019056866}
+  m_Size: {x: 0.009756204, y: 0.0010274827, z: 0.040831994}
+  m_Center: {x: -0.0000000048428777, y: -0.0000007151161, z: 0.020416053}
 --- !u!1 &580609566 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5603568263708238521, guid: 1fb6ca230594047989033a59863f13c4, type: 3}
@@ -576,8 +580,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.009756204, y: 0.0010274827, z: 0.03727277}
-  m_Center: {x: -0.0000000048428777, y: -0.00000071651306, z: 0.018636376}
+  m_Size: {x: 0.009756204, y: 0.0010274827, z: 0.041107424}
+  m_Center: {x: -0.0000000048428777, y: -0.00000071651306, z: 0.020553773}
 --- !u!1001 &646919134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -596,7 +600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1fb6ca230594047989033a59863f13c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.57
+      value: -0.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1fb6ca230594047989033a59863f13c4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -627,6 +631,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5603568263708238521, guid: 1fb6ca230594047989033a59863f13c4, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5603568263708238521, guid: 1fb6ca230594047989033a59863f13c4, type: 3}
       propertyPath: m_TagString
       value: ladder
       objectReference: {fileID: 0}
@@ -654,6 +662,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.158
       objectReference: {fileID: 0}
+    - target: {fileID: 6505912596536071647, guid: 1fb6ca230594047989033a59863f13c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.083
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -7029948723529949830, guid: 1fb6ca230594047989033a59863f13c4, type: 3}
@@ -676,7 +688,7 @@ GameObject:
   - component: {fileID: 682940266}
   - component: {fileID: 682940265}
   - component: {fileID: 682940264}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform
   m_TagString: platform
   m_Icon: {fileID: 0}
@@ -964,7 +976,7 @@ GameObject:
   - component: {fileID: 932614402}
   - component: {fileID: 932614401}
   - component: {fileID: 932614400}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform (2)
   m_TagString: platform
   m_Icon: {fileID: 0}
@@ -1077,7 +1089,7 @@ GameObject:
   - component: {fileID: 1105247738}
   - component: {fileID: 1105247737}
   - component: {fileID: 1105247736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform (1)
   m_TagString: platform
   m_Icon: {fileID: 0}
@@ -1686,7 +1698,8 @@ GameObject:
   - component: {fileID: 1909412365}
   - component: {fileID: 1909412369}
   - component: {fileID: 1909412370}
-  m_Layer: 0
+  - component: {fileID: 1909412371}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1799,7 +1812,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.75
   jumpForce: 2.5
-  climbSpeed: 1
 --- !u!54 &1909412370
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1827,6 +1839,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 88
   m_CollisionDetection: 0
+--- !u!114 &1909412371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909412364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b466efcc000941cd826779a74d03147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbSpeed: 2
 --- !u!1001 &1821757778216230062
 PrefabInstance:
   m_ObjectHideFlags: 0
