@@ -22,4 +22,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("Destroying barrel: " + barrel.name);
         Destroy(barrel);
     }
+
+    public void PlayerDied(GameObject playerObject)
+{
+    Player player = playerObject.GetComponent<Player>();
+
+    if (player != null)
+    {
+        player.TakeDamage(player.maxHealth); // Force full HP damage
+    }
+}
+
 }
