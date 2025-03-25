@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     public int maxHealth = 3;
     public int currentHealth;
     public int lives = 3;
+    public HUDManager hudManager;
 
     [Header("Movement Settings")]
     [SerializeField] private float speed = 1.25f;
@@ -65,7 +66,7 @@ private void Start()
     {
         currentHealth -= amount;
         Debug.Log("Player took damage. Current HP: " + currentHealth);
-
+        hudManager.LoseLife();
         if (currentHealth <= 0)
         {
             Die();
