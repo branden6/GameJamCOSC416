@@ -23,13 +23,12 @@ public class Player : MonoBehaviour
     private UserInput input;
     private bool midJump = false;
 
-private void Start()
-{
-    rb = GetComponent<Rigidbody>();
-    input = FindObjectOfType<UserInput>(); // Look for the global input manager
-    currentHealth = maxHealth;
-}
-
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        input = FindObjectOfType<UserInput>(); // Look for the global input manager
+        currentHealth = maxHealth;
+    }
 
     private void Update()
     {
@@ -38,34 +37,38 @@ private void Start()
 
     private void HandleInput()
     {
+        Vector3 velocity = rb.linearVelocity;
+
         if (input.Left)
         {
             if (!midJump) transform.eulerAngles = new Vector3(0, 0, 0);
-            rb.linearVelocity = new Vector3(-speed, rb.linearVelocity.y, 0);
+            velocity.x = -speed;
         }
         else if (input.Right)
         {
             if (!midJump) transform.eulerAngles = new Vector3(0, 180, 0);
-            rb.linearVelocity = new Vector3(speed, rb.linearVelocity.y, 0);
+            velocity.x = speed;
         }
         else
         {
-            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+            velocity.x = 0;
         }
 
         if (input.Jump && !midJump)
         {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, 0);
+            velocity.y = jumpForce;
             midJump = true;
             input.ResetJump();
         }
 
+        rb.linearVelocity = velocity;
+
+        // Clone Summon
         if (Input.GetKeyDown(KeyCode.E) && activeNeutralClone == null)
         {
             SummonNeutralClone();
         }
     }
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -120,6 +123,4 @@ private void Start()
     {
         activeNeutralClone = null;
     }
-
-
 }

@@ -149,5 +149,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3880ac82a43da44db41a995648d0959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vaultForce: 10
+  vaultForce: 5
   playerScript: {fileID: 0}
