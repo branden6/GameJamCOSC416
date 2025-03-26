@@ -6,7 +6,14 @@ public class Player : MonoBehaviour
     public int maxHealth = 3;
     public int currentHealth;
     public int lives = 3;
+
+    [Header("HUD Interact")]
     public HUDManager hudManager;
+
+    [Header("Clone Summoning")]
+    public GameObject neutralClonePrefab;
+    public Transform cloneSpawnPoint;
+    private GameObject activeNeutralClone;
 
     [Header("Movement Settings")]
     [SerializeField] private float speed = 1.25f;
@@ -16,13 +23,12 @@ public class Player : MonoBehaviour
     private UserInput input;
     private bool midJump = false;
 
-private void Start()
-{
-    rb = GetComponent<Rigidbody>();
-    input = FindObjectOfType<UserInput>(); // Look for the global input manager
-    currentHealth = maxHealth;
-}
-
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        input = FindObjectOfType<UserInput>(); // Look for the global input manager
+        currentHealth = maxHealth;
+    }
 
     private void Update()
     {
@@ -31,26 +37,36 @@ private void Start()
 
     private void HandleInput()
     {
+        Vector3 velocity = rb.linearVelocity;
+
         if (input.Left)
         {
             if (!midJump) transform.eulerAngles = new Vector3(0, 0, 0);
-            rb.linearVelocity = new Vector3(-speed, rb.linearVelocity.y, 0);
+            velocity.x = -speed;
         }
         else if (input.Right)
         {
             if (!midJump) transform.eulerAngles = new Vector3(0, 180, 0);
-            rb.linearVelocity = new Vector3(speed, rb.linearVelocity.y, 0);
+            velocity.x = speed;
         }
         else
         {
-            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+            velocity.x = 0;
         }
 
         if (input.Jump && !midJump)
         {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, 0);
+            velocity.y = jumpForce;
             midJump = true;
             input.ResetJump();
+        }
+
+        rb.linearVelocity = velocity;
+
+        // Clone Summon
+        if (Input.GetKeyDown(KeyCode.E) && activeNeutralClone == null)
+        {
+            SummonNeutralClone();
         }
     }
 
@@ -93,5 +109,18 @@ private void Start()
     {
         currentHealth = maxHealth;
         Debug.Log("Player respawned.");
+    }
+
+    private void SummonNeutralClone()
+    {
+        GameObject clone = Instantiate(neutralClonePrefab, cloneSpawnPoint.position, Quaternion.identity);
+        activeNeutralClone = clone;
+
+        clone.GetComponent<NeutralClone>().playerScript = this;
+    }
+
+    public void ClearNeutralClone()
+    {
+        activeNeutralClone = null;
     }
 }
