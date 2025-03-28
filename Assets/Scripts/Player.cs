@@ -106,10 +106,21 @@ public class Player : MonoBehaviour
     }
 
     private void Respawn()
+{
+    currentHealth = maxHealth;
+
+    GameObject spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn");
+    if (spawnPoint != null)
     {
-        currentHealth = maxHealth;
-        Debug.Log("Player respawned.");
+        transform.position = spawnPoint.transform.position;
+        Debug.Log("Player respawned at spawn point.");
     }
+    else
+    {
+        Debug.LogWarning("PlayerSpawn tag not found. Respawning in place.");
+    }
+}
+
 
     private void SummonNeutralClone()
     {
