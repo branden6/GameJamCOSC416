@@ -534,6 +534,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7911206449403021961, guid: 28a364328f5fc4a11b38d96283ebac0f, type: 3}
   m_PrefabInstance: {fileID: 1821757778216230062}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &309841942 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5952801045803922189, guid: ff1f76fe8427e4820889c3d03cb0ff99, type: 3}
+  m_PrefabInstance: {fileID: 3382440979162392669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &310414350 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4877961530835896539, guid: f6bfe9c56482346878a4d645821f7984, type: 3}
@@ -1305,6 +1310,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940368248}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &955724639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 955724640}
+  m_Layer: 7
+  m_Name: Clone_SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &955724640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955724639}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 309841942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &955920992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2594,6 +2630,14 @@ PrefabInstance:
       propertyPath: hudManager
       value: 
       objectReference: {fileID: 310414350}
+    - target: {fileID: 571033388852488104, guid: ff1f76fe8427e4820889c3d03cb0ff99, type: 3}
+      propertyPath: cloneSpawnPoint
+      value: 
+      objectReference: {fileID: 955724640}
+    - target: {fileID: 571033388852488104, guid: ff1f76fe8427e4820889c3d03cb0ff99, type: 3}
+      propertyPath: neutralClonePrefab
+      value: 
+      objectReference: {fileID: 198813387838526515, guid: d86b48693a7339040a300fb92fafcf35, type: 3}
     - target: {fileID: 1324036875648065437, guid: ff1f76fe8427e4820889c3d03cb0ff99, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2640,7 +2684,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5952801045803922189, guid: ff1f76fe8427e4820889c3d03cb0ff99, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 955724640}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff1f76fe8427e4820889c3d03cb0ff99, type: 3}
 --- !u!1660057539 &9223372036854775807
