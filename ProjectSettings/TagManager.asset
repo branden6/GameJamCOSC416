@@ -10,6 +10,7 @@ TagManager:
   - platform
   - ladder
   - ground
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX
