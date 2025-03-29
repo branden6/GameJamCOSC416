@@ -711,11 +711,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5363012198542598786, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
       propertyPath: m_Height
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5363012198542598786, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
       propertyPath: m_Radius
-      value: 0.5
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818066303004943469, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6818066303004943469, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
       propertyPath: m_Interpolate
@@ -751,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8728852996766168014, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4614
+      value: -0.424
       objectReference: {fileID: 0}
     - target: {fileID: 8728852996766168014, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
       propertyPath: m_LocalPosition.y
