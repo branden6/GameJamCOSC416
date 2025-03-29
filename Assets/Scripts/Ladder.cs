@@ -4,11 +4,14 @@ public class LadderClimb : MonoBehaviour
 {
     private bool onLadder = false;
     private Rigidbody rb;
-    [SerializeField] private float climbSpeed = 0.75f;  
+    [SerializeField] private float climbSpeed = 0.75f;
+
+    private UserInput input;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        input = FindObjectOfType<UserInput>();
     }
 
     void Update()
@@ -21,21 +24,19 @@ public class LadderClimb : MonoBehaviour
 
     void ClimbLadder()
     {
-
         rb.useGravity = false;
 
-    
-        float verticalInput = Input.GetAxisRaw("Vertical");
-
-        if (verticalInput != 0)
+        if (input.Up)
         {
-           
-            rb.linearVelocity = new Vector3(0, verticalInput * climbSpeed, 0);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, climbSpeed, 0);
+        }
+        else if (input.Down)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, -climbSpeed, 0);
         }
         else
         {
-         
-            rb.linearVelocity = new Vector3(0, 0, 0);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, 0);
         }
     }
 
