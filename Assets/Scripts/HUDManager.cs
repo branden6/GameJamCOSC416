@@ -7,18 +7,18 @@ public class HUDManager : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text timerText;
     public TMP_Text levelText;
+    public TMP_Text livesText; // purely for displaying Player's lives
+
     public Image[] heartIcons;
 
     private int score = 0;
-    private int lives = 3;
     public int level = 1;
 
-    public float timeRemaining = 420f;  // Timer start
+    public float timeRemaining = 420f;
     private bool timerRunning = true;
 
     void Update()
     {
-
         if (timerRunning)
         {
             timeRemaining -= Time.deltaTime;
@@ -27,8 +27,8 @@ public class HUDManager : MonoBehaviour
                 timeRemaining = 0;
                 timerRunning = false;
                 Debug.Log("Time's up! Game Over.");
-                // We can call game over here
             }
+
             UpdateHUD();
         }
     }
@@ -37,17 +37,9 @@ public class HUDManager : MonoBehaviour
     {
         scoreText.text = "SCORE: " + score.ToString("D6");
         timerText.text = "TIME: " + Mathf.CeilToInt(timeRemaining).ToString();
-        levelText.text = "LEVEL: 1";
+        levelText.text = "LEVEL: " + level;
 
-        if (timeRemaining <= 60f)
-            timerText.color = Color.red;
-        else
-            timerText.color = Color.white;
-
-        for (int i = 0; i < heartIcons.Length; i++)
-        {
-            heartIcons[i].enabled = i < lives;
-        }
+        timerText.color = timeRemaining <= 60f ? Color.red : Color.white;
     }
 
     public void AddScore(int points)
@@ -56,16 +48,23 @@ public class HUDManager : MonoBehaviour
         UpdateHUD();
     }
 
-    public void LoseLife()
-    {
-        if (lives > 0)
-            lives--;
-        UpdateHUD();
-    }
-
     public void SetLevel(int newLevel)
     {
         level = newLevel;
         UpdateHUD();
+    }
+
+    public void SetHealth(int hp)
+    {
+        for (int i = 0; i < heartIcons.Length; i++)
+            heartIcons[i].enabled = false;
+
+        for (int i = 0; i < hp && i < heartIcons.Length; i++)
+            heartIcons[i].enabled = true;
+    }
+
+    public void SetLives(int lives)
+    {
+        livesText.text = "LIVES: " + lives.ToString();
     }
 }
