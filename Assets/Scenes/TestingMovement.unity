@@ -599,6 +599,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4847968933232643082, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7363648586181551928, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
       propertyPath: hudManager
       value: 
