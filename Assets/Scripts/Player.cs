@@ -50,12 +50,16 @@ public class Player : MonoBehaviour
             visual.localScale = new Vector3(1, 1, 1);
             velocity.x = -speed;
             isMoving = true;
+
+            FlipCloneSpawnPoint(false);
         }
         else if (input.Right)
         {
             visual.localScale = new Vector3(-1, 1, 1);
             velocity.x = speed;
             isMoving = true;
+
+            FlipCloneSpawnPoint(true); 
         }
         else
         {
@@ -80,6 +84,7 @@ public class Player : MonoBehaviour
             SummonNeutralClone();
         }
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -147,4 +152,12 @@ public class Player : MonoBehaviour
     {
         activeNeutralClone = null;
     }
+
+    private void FlipCloneSpawnPoint(bool facingLeft)
+    {
+        Vector3 spawnLocalPos = cloneSpawnPoint.localPosition;
+        spawnLocalPos.x = Mathf.Abs(spawnLocalPos.x) * (facingLeft ? -1 : 1);
+        cloneSpawnPoint.localPosition = spawnLocalPos;
+    }
+
 }
