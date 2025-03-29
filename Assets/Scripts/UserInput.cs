@@ -8,6 +8,7 @@ public class UserInput : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
         Left = Input.GetKey(KeyCode.A);
         Right = Input.GetKey(KeyCode.D);
         Jump = Input.GetKeyDown(KeyCode.Space);
