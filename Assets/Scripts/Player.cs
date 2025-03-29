@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
         input = FindObjectOfType<UserInput>();
         currentHealth = maxHealth;
         animator = visual.GetComponent<Animator>();
+        hudManager.SetLives(lives);
+
     }
 
     private void Update()
@@ -50,12 +52,16 @@ public class Player : MonoBehaviour
             visual.localScale = new Vector3(1, 1, 1);
             velocity.x = -speed;
             isMoving = true;
+
+            FlipCloneSpawnPoint(false);
         }
         else if (input.Right)
         {
             visual.localScale = new Vector3(-1, 1, 1);
             velocity.x = speed;
             isMoving = true;
+
+            FlipCloneSpawnPoint(true); 
         }
         else
         {
@@ -81,6 +87,7 @@ public class Player : MonoBehaviour
         }
     }
 
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("platform"))
@@ -95,7 +102,7 @@ public class Player : MonoBehaviour
         currentHealth -= amount;
         animator.SetTrigger("Hit");
         Debug.Log("Player took damage. Current HP: " + currentHealth);
-        hudManager.LoseLife();
+        hudManager.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
             Die();
@@ -105,6 +112,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
         lives--;
+        hudManager.SetLives(lives);
         animator.SetTrigger("Die");
         Debug.Log("Player died. Lives remaining: " + lives);
 
@@ -119,10 +127,12 @@ public class Player : MonoBehaviour
         }
     }
 
+
     private void Respawn()
     {
         currentHealth = maxHealth;
-
+        hudManager.SetHealth(currentHealth);
+        hudManager.SetLives(lives);
         GameObject spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn");
         if (spawnPoint != null)
         {
@@ -147,4 +157,12 @@ public class Player : MonoBehaviour
     {
         activeNeutralClone = null;
     }
+
+    private void FlipCloneSpawnPoint(bool facingLeft)
+    {
+        Vector3 spawnLocalPos = cloneSpawnPoint.localPosition;
+        spawnLocalPos.x = Mathf.Abs(spawnLocalPos.x) * (facingLeft ? -1 : 1);
+        cloneSpawnPoint.localPosition = spawnLocalPos;
+    }
+
 }
