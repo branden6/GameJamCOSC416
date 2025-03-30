@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &14958130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,7 +454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &197078047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2747,6 +2747,10 @@ PrefabInstance:
     - target: {fileID: 5187787147346195938, guid: 4be80df31d3a94401959d41f125968f8, type: 3}
       propertyPath: m_Name
       value: HowToPlayButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5187787147346195938, guid: 4be80df31d3a94401959d41f125968f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7941311972450816508, guid: 4be80df31d3a94401959d41f125968f8, type: 3}
       propertyPath: m_Pivot.x
