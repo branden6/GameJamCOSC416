@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class MainMenuController : MonoBehaviour
 
     public void StartGame()
     {
-        // Load level scene later
+        SceneManager.LoadScene("LevelOne");
     }
 
     public void ShowHowToPlay()
