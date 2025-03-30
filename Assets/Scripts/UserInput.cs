@@ -10,7 +10,7 @@ public class UserInput : MonoBehaviour
 
     void Update()
     {
-        
+        if (Time.timeScale == 0f) return;
         Left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
         Right = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
         Jump = Input.GetKeyDown(KeyCode.Space);

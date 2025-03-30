@@ -22,9 +22,14 @@ public class MainMenuController : MonoBehaviour
         MainMenuCanvas.SetActive(true);
     }
 
-    public void ExitGame()
+    public void QuitGame()
     {
+        Debug.Log("Quit Game");
+
+#if UNITY_EDITOR
+    UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
-        Debug.Log("Game Closed");
+#endif
     }
 }
