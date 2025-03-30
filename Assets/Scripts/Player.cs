@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private UserInput input;
     private bool midJump = false;
+    [HideInInspector]
+    public bool isBoosted = false;
+
 
     private void Start()
     {
@@ -61,7 +64,7 @@ public class Player : MonoBehaviour
             velocity.x = speed;
             isMoving = true;
 
-            FlipCloneSpawnPoint(true); 
+            FlipCloneSpawnPoint(true);
         }
         else
         {
@@ -99,6 +102,12 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isBoosted)
+        {
+            Debug.Log("Player is boosted — no damage taken!");
+            return;
+        }
+
         currentHealth -= amount;
         animator.SetTrigger("Hit");
         Debug.Log("Player took damage. Current HP: " + currentHealth);
