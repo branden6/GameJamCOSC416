@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
 {
-    public GameObject howToPlayPanel;
+    [SerializeField] private GameObject HowToPlayCanvas;
+    [SerializeField] private GameObject MainMenuCanvas;
 
     public void StartGame()
     {
@@ -11,12 +12,14 @@ public class MainMenuController : MonoBehaviour
 
     public void ShowHowToPlay()
     {
-        howToPlayPanel.SetActive(true);
+        MainMenuCanvas.SetActive(false);
+        HowToPlayCanvas.SetActive(true);
     }
 
-    public void HideHowToPlay()
+    public void ShowMainMenu()
     {
-        howToPlayPanel.SetActive(false);
+        HowToPlayCanvas.SetActive(false);
+        MainMenuCanvas.SetActive(true);
     }
 
     public void ExitGame()
