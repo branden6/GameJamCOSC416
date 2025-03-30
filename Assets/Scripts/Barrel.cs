@@ -26,7 +26,7 @@ public class Barrel : MonoBehaviour
         if (collision.gameObject.CompareTag("borderR"))
         {
             // 15% chance to ignore collision (roll through)
-            if (Random.value < 0.15f)
+            if (Random.value < 0.10f)
             {
                 StartCoroutine(TemporarilyIgnoreCollision(collision.collider));
             }
@@ -40,7 +40,7 @@ public class Barrel : MonoBehaviour
         // Check for collision with the left border
         else if (collision.gameObject.CompareTag("borderL"))
         {
-            if (Random.value < 0.15f)
+            if (Random.value < 0.10f)
             {
                 StartCoroutine(TemporarilyIgnoreCollision(collision.collider));
             }
