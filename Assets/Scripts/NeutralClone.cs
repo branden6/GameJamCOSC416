@@ -107,8 +107,4 @@ private IEnumerator TemporarilyDisablePlatformCollision(GameObject player)
     playerScript.ClearNeutralClone();
     Destroy(gameObject);
 }
-
-
-
-
 }
