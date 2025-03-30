@@ -121,7 +121,6 @@ public class Player : MonoBehaviour
     private void Die()
     {
         lives--;
-        hudManager.SetLives(lives);
         animator.SetTrigger("Die");
         Debug.Log("Player died. Lives remaining: " + lives);
 
@@ -132,9 +131,11 @@ public class Player : MonoBehaviour
         else
         {
             Debug.Log("Game Over!");
+            GameManager.Instance.LoadGameOverScene(); // 👈 Goes to GameOver scene now
             Destroy(gameObject);
         }
     }
+
 
 
     private void Respawn()

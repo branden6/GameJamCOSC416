@@ -9,11 +9,29 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/TestingMovement.unity
-    guid: 88b4ad903944f4c8883d2b072389c12c
+    path: Assets/Scenes/GameWon.unity
+    guid: fe47aa3b74c58401d9789124aa6a55b3
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 98c9c0eae08644d17baea285f00cfc08
   - enabled: 1
     path: Assets/Scenes/IntroScene.unity
     guid: ef674415a3e2242dba022e76bfbb4f17
+  - enabled: 1
+    path: Assets/Scenes/TestingMovement.unity
+    guid: 88b4ad903944f4c8883d2b072389c12c
+  - enabled: 1
+    path: Assets/Scenes/LevelOne.unity
+    guid: 45a5225d85a9849df8453e71dbe37301
+  - enabled: 1
+    path: Assets/Scenes/LevelTwo.unity
+    guid: c9b5d0d628627440d98b87d8e13637a9
+  - enabled: 1
+    path: Assets/Scenes/LevelThree.unity
+    guid: a4775e12a78184ec9a68dca44dabe813
+  - enabled: 1
+    path: Assets/Scenes/LevelFour.unity
+    guid: e491491de00524d5b9b70b654514842b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
