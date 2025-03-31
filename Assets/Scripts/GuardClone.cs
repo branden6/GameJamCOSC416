@@ -29,7 +29,13 @@ public class GuardClone : MonoBehaviour
 
         if (visual != null && walkDirection != Vector3.zero)
         {
-            visual.localScale = new Vector3(Mathf.Sign(walkDirection.x), 1, 1);
+            // Preserve scale, only flip X direction
+            Vector3 originalScale = visual.localScale;
+            visual.localScale = new Vector3(
+                Mathf.Abs(originalScale.x) * Mathf.Sign(walkDirection.x),
+                originalScale.y,
+                originalScale.z
+            );
         }
     }
 
@@ -42,18 +48,17 @@ public class GuardClone : MonoBehaviour
 
         if (Physics.Raycast(rayOrigin, Vector3.down, out hit, groundCheckDistance, groundLayer))
         {
-            // Move along slope
+            // Get slope tangent
             Vector3 slopeNormal = hit.normal;
             Vector3 slopeTangent = Vector3.Cross(Vector3.forward, slopeNormal).normalized;
 
-            // Ensure direction matches intended direction
             if (Vector3.Dot(slopeTangent, walkDirection) < 0)
                 slopeTangent = -slopeTangent;
 
             // Move along slope
             transform.position += slopeTangent * walkSpeed * Time.deltaTime;
 
-            // Stick to the ground based on height
+            // Stick to ground based on actual height
             float heightOffset = 0.5f;
 
             Collider col = GetComponent<Collider>();
@@ -65,35 +70,25 @@ public class GuardClone : MonoBehaviour
             {
                 Renderer rend = GetComponentInChildren<Renderer>();
                 if (rend != null)
-                {
                     heightOffset = rend.bounds.extents.y;
-                }
             }
 
             Vector3 groundedPos = transform.position;
             groundedPos.y = hit.point.y + heightOffset;
             transform.position = groundedPos;
-
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + Vector3.down * 0.05f, new Vector3(0.8f, 0.1f, 0.2f));
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("barrel"))
         {
-            Destroy(other.gameObject); // Remove the barrel
-            StartCoroutine(ShakeEffect()); // Play hit shake
+            Destroy(other.gameObject);
+            StartCoroutine(ShakeEffect());
         }
     }
 
@@ -118,6 +113,9 @@ public class GuardClone : MonoBehaviour
         transform.position = originalPos;
     }
 
-
-
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position + Vector3.down * 0.05f, new Vector3(0.8f, 0.1f, 0.2f));
+    }
 }
