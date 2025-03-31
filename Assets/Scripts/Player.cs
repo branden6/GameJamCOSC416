@@ -28,6 +28,11 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private UserInput input;
     private bool midJump = false;
+
+    [Header("Sound Effects")]
+    public float footstepTimer = 0f;
+    public float footstepInterval = 0.3f;
+
     [HideInInspector]
     public bool isBoosted = false;
 
@@ -49,6 +54,7 @@ public class Player : MonoBehaviour
     {
         Vector3 velocity = rb.linearVelocity;
         bool isMoving = false;
+        footstepTimer += Time.deltaTime;
 
         if (input.Left)
         {
@@ -56,6 +62,10 @@ public class Player : MonoBehaviour
             velocity.x = -speed;
             isMoving = true;
             FlipCloneSpawnPoint(false);
+            if (footstepTimer >= footstepInterval){
+                PlayFootstep();
+        }
+
         }
         else if (input.Right)
         {
@@ -63,6 +73,11 @@ public class Player : MonoBehaviour
             velocity.x = speed;
             isMoving = true;
             FlipCloneSpawnPoint(true);
+            if (footstepTimer >= footstepInterval){
+                PlayFootstep();
+        }
+
+
         }
         else
         {
@@ -249,5 +264,11 @@ public class Player : MonoBehaviour
         Vector3 spawnLocalPos = cloneSpawnPoint.localPosition;
         spawnLocalPos.x = Mathf.Abs(spawnLocalPos.x) * (facingLeft ? -1 : 1);
         cloneSpawnPoint.localPosition = spawnLocalPos;
+    }
+
+    public void PlayFootstep(){
+            int index = AudioManager.Instance.getFootstepNumber();
+            AudioManager.Instance.PlayFootstep(AudioManager.Instance.footsteps[index].name);
+            footstepTimer = 0f;
     }
 }
