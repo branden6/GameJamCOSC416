@@ -7,21 +7,24 @@ public class HUDManager : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text timerText;
     public TMP_Text levelText;
-    public TMP_Text livesText; // purely for displaying Player's lives
+    public TMP_Text livesText;
 
     public Image[] heartIcons;
-
-    private int score = 0;
-    public int level = 1;
 
     public float timeRemaining = 420f;
     private bool timerRunning = true;
 
-    void Update()
+    private void Start()
+    {
+        UpdateHUD();
+    }
+
+    private void Update()
     {
         if (timerRunning)
         {
             timeRemaining -= Time.deltaTime;
+
             if (timeRemaining <= 0)
             {
                 timeRemaining = 0;
@@ -35,24 +38,26 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateHUD()
     {
-        scoreText.text = "SCORE: " + score.ToString("D6");
+        scoreText.text = "SCORE: " + GameManager.Instance.score.ToString("D6");
         timerText.text = "TIME: " + Mathf.CeilToInt(timeRemaining).ToString();
-        levelText.text = "LEVEL: " + level;
-
+        int levelNumber = GameManager.Instance.currentLevelIndex - GameManager.Instance.firstPlayableLevelBuildIndex + 1;
+        levelText.text = "LEVEL: " + levelNumber;
         timerText.color = timeRemaining <= 60f ? Color.red : Color.white;
     }
 
     public void AddScore(int points)
+{
+    GameManager.Instance.score += points;
+
+    // Prevent score from going below 0
+    if (GameManager.Instance.score < 0)
     {
-        score += points;
-        UpdateHUD();
+        GameManager.Instance.score = 0;
     }
 
-    public void SetLevel(int newLevel)
-    {
-        level = newLevel;
-        UpdateHUD();
-    }
+    UpdateHUD();
+}
+
 
     public void SetHealth(int hp)
     {

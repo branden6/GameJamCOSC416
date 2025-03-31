@@ -11,6 +11,7 @@ TagManager:
   - ladder
   - ground
   - PlayerSpawn
+  - barrelTrigger
   layers:
   - Default
   - TransparentFX
