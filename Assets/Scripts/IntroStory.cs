@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class IntroStory : MonoBehaviour
 {
@@ -9,8 +11,8 @@ public class IntroStory : MonoBehaviour
     public float displayDuration = 2.5f;
 
     public GameObject blackBackground;
-    public GameObject dkReveal; // ← Assign DonkeyKongReveal here
-    public DKTextTypewriter dkTypewriter; // ← Assign typewriter script (DKTextTypewriter.cs)
+    public GameObject dkReveal;
+    public DKTextTypewriter dkTypewriter;
 
     private void Start()
     {
@@ -19,7 +21,7 @@ public class IntroStory : MonoBehaviour
             SetAlpha(text, 0f);
         }
 
-        dkReveal.SetActive(false); // Make sure it's hidden initially
+        dkReveal.SetActive(false);
         StartCoroutine(PlayIntroSlides());
     }
 
@@ -42,6 +44,10 @@ public class IntroStory : MonoBehaviour
 
         // Start DK taunt typing
         dkTypewriter.BeginTyping();
+
+        yield return new WaitUntil(() => Input.anyKeyDown);
+        SceneManager.LoadScene("LevelOne");
+
     }
 
     void SetAlpha(TextMeshProUGUI text, float alpha)
