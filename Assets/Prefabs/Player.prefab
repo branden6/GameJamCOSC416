@@ -242,6 +242,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visual: {fileID: 69203887008308965}
   climbSpeed: 4
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  groundCheckDistance: 0.1
 --- !u!114 &7363648586181551928
 MonoBehaviour:
   m_ObjectHideFlags: 0

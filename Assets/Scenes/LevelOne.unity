@@ -4813,6 +4813,10 @@ PrefabInstance:
       propertyPath: climbSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7970358388735130138, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
+      propertyPath: ladderLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8258039584273978077, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
       propertyPath: m_Name
       value: Player
