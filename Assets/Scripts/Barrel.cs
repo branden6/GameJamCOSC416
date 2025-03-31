@@ -64,17 +64,25 @@ public class Barrel : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
+{
+    if (other.CompareTag("Player"))
     {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Barrel hit the player!");
-            Player player = other.GetComponent<Player>();
+        Debug.Log("Barrel hit the player!");
+        Player player = other.GetComponent<Player>();
 
-            if (player != null)
+        if (player != null)
+        {
+            player.TakeDamage(1);
+
+            HUDManager hud = FindObjectOfType<HUDManager>();
+            if (hud != null)
             {
-                player.TakeDamage(1);
-                GameManager.Instance.DestroyBarrel(gameObject);
+                hud.AddScore(-100);
             }
+
+            GameManager.Instance.DestroyBarrel(gameObject);
         }
     }
+}
+
 }
