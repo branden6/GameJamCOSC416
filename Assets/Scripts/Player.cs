@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     [Header("Clone Summoning")]
     public GameObject neutralClonePrefab;
+    public GameObject guardClonePrefab;
     public Transform cloneSpawnPoint;
     private GameObject activeNeutralClone;
 
@@ -82,9 +83,18 @@ public class Player : MonoBehaviour
         animator.SetBool("isRunning", isMoving);
         animator.SetBool("isJumping", midJump);
 
-        if (Input.GetKeyDown(KeyCode.E) && activeNeutralClone == null)
+        // Summon clone based on input
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            SummonNeutralClone();
+            if ((input.Left || input.Right) && activeNeutralClone == null)
+            {
+                float dir = input.Left ? -1f : 1f;
+                SummonGuardClone(dir);
+            }
+            else if (activeNeutralClone == null)
+            {
+                SummonNeutralClone();
+            }
         }
     }
 
@@ -154,11 +164,10 @@ public class Player : MonoBehaviour
     {
         Vector3 spawnPos = cloneSpawnPoint.position;
 
-        
         RaycastHit hit;
         int platformLayer = LayerMask.GetMask("Platform");
 
-        if (Physics.Raycast(spawnPos, Vector3.down, out hit, 2f, platformLayer))
+        if (Physics.Raycast(spawnPos + Vector3.up * 0.5f, Vector3.down, out hit, 2f, platformLayer))
         {
             spawnPos.y = hit.point.y + 0.1f;
         }
@@ -175,6 +184,35 @@ public class Player : MonoBehaviour
         }
 
         clone.GetComponent<NeutralClone>().playerScript = this;
+    }
+
+    private void SummonGuardClone(float direction)
+    {
+        Vector3 spawnPos = cloneSpawnPoint.position;
+        GameObject clone = Instantiate(guardClonePrefab, spawnPos, Quaternion.identity);
+
+        // Set walk direction
+        Vector3 walkDirection = new Vector3(direction, 0, 0);
+        var guard = clone.GetComponent<GuardClone>();
+        guard.Initialize(walkDirection);
+
+        RaycastHit hit;
+        int platformLayer = LayerMask.GetMask("Platform");
+
+        if (Physics.Raycast(clone.transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 3f, platformLayer))
+        {
+            float heightOffset = 0.01f;
+
+            Renderer rend = clone.GetComponentInChildren<Renderer>();
+            if (rend != null)
+            {
+                heightOffset = rend.bounds.extents.y;
+            }
+
+            Vector3 correctedPos = clone.transform.position;
+            correctedPos.y = hit.point.y + heightOffset;
+            clone.transform.position = correctedPos;
+        }
     }
 
 
