@@ -23,13 +23,11 @@ public class GuardClone : MonoBehaviour
         walkDirection = direction.normalized;
 
         if (visual == null)
-        {
             visual = transform.Find("Visual");
-        }
 
         if (visual != null && walkDirection != Vector3.zero)
         {
-            // Preserve scale, only flip X direction
+            // Flip only X scale (facing direction), keep size
             Vector3 originalScale = visual.localScale;
             visual.localScale = new Vector3(
                 Mathf.Abs(originalScale.x) * Mathf.Sign(walkDirection.x),
@@ -39,13 +37,29 @@ public class GuardClone : MonoBehaviour
         }
     }
 
+    public void SetVisualScale(float scale)
+    {
+        if (visual == null)
+            visual = transform.Find("Visual");
+
+        if (visual != null)
+        {
+            float dir = Mathf.Sign(visual.localScale.x);
+            visual.localScale = new Vector3(dir * scale, scale, scale);
+        }
+    }
+
     private void Update()
     {
         if (Time.time - spawnTime < edgeCheckDelay) return;
 
-        Vector3 rayOrigin = transform.position + walkDirection * 0.3f + Vector3.up * 0.2f;
-        RaycastHit hit;
+        Collider col = GetComponent<Collider>();
+        float heightOffset = col ? col.bounds.extents.y : 0.5f;
 
+        Vector3 rayOrigin = transform.position + walkDirection * 0.2f + Vector3.up * heightOffset * 0.5f;
+        Debug.DrawRay(rayOrigin, Vector3.down * groundCheckDistance, Color.red);
+
+        RaycastHit hit;
         if (Physics.Raycast(rayOrigin, Vector3.down, out hit, groundCheckDistance, groundLayer))
         {
             // Get slope tangent
@@ -58,23 +72,9 @@ public class GuardClone : MonoBehaviour
             // Move along slope
             transform.position += slopeTangent * walkSpeed * Time.deltaTime;
 
-            // Stick to ground based on actual height
-            float heightOffset = 0.5f;
-
-            Collider col = GetComponent<Collider>();
-            if (col != null)
-            {
-                heightOffset = col.bounds.extents.y;
-            }
-            else
-            {
-                Renderer rend = GetComponentInChildren<Renderer>();
-                if (rend != null)
-                    heightOffset = rend.bounds.extents.y;
-            }
-
+            // Stick to ground
             Vector3 groundedPos = transform.position;
-            groundedPos.y = hit.point.y + heightOffset;
+            groundedPos.y = hit.point.y + heightOffset * 0.9f;
             transform.position = groundedPos;
         }
         else

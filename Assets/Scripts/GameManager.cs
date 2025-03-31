@@ -3,13 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public int firstPlayableLevelBuildIndex = 5;
+
     public static GameManager Instance { get; private set; }
 
-    public int currentLevelIndex = 1; // Assuming LevelOne = Build Index 1
+    public int score = 0;
+    public int currentLevelIndex = 1; // Default to Level 1
 
     private void Awake()
     {
-        // Ensure only one GameManager exists
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -17,7 +19,21 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Keep GameManager alive between scenes
+        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Update level index based on scene build index
+        currentLevelIndex = scene.buildIndex;
+
+        // Update the HUD if it exists in the new scene
+        HUDManager hud = FindObjectOfType<HUDManager>();
+        if (hud != null)
+        {
+            hud.UpdateHUD();
+        }
     }
 
     public void DestroyBarrel(GameObject barrel)
@@ -32,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         if (player != null)
         {
-            player.TakeDamage(player.maxHealth); // Force full HP damage
+            player.TakeDamage(player.maxHealth);
         }
     }
 
@@ -42,23 +58,24 @@ public class GameManager : MonoBehaviour
 
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            currentLevelIndex = nextSceneIndex;
             SceneManager.LoadScene(nextSceneIndex);
         }
         else
         {
-            Debug.Log("No more levels. Game completed!");
+            SceneManager.LoadScene("GameWon");
+            Debug.Log("All levels complete! Game won!");
         }
     }
 
     public void RestartGame()
     {
-        currentLevelIndex = 1; // Reset back to LevelOne
+        score = 0;
+        currentLevelIndex = 1;
         SceneManager.LoadScene(currentLevelIndex);
     }
 
     public void LoadGameOverScene()
     {
-        SceneManager.LoadScene("GameOver"); // Make sure GameOver is added to Build Settings
+        SceneManager.LoadScene("GameOver");
     }
 }
