@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 
     [Header("Sound Effects")]
     public float footstepTimer = 0f;
-    public float footstepInterval = 0.3f;
+    public float footstepInterval = 0.25f;
 
     [HideInInspector]
     public bool isBoosted = false;
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
             velocity.x = -speed;
             isMoving = true;
             FlipCloneSpawnPoint(false);
-            if (footstepTimer >= footstepInterval){
+            if (!midJump && footstepTimer >= footstepInterval){
                 PlayFootstep();
         }
 
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
             velocity.x = speed;
             isMoving = true;
             FlipCloneSpawnPoint(true);
-            if (footstepTimer >= footstepInterval){
+            if (!midJump && footstepTimer >= footstepInterval){
                 PlayFootstep();
         }
 
