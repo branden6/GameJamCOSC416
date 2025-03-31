@@ -6,7 +6,7 @@ public class BananaSpin : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0f, spinSpeed * Time.deltaTime, 0f);
+        transform.Rotate(0f, 0f, spinSpeed * Time.deltaTime);
     }
 }
 
