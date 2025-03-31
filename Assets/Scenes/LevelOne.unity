@@ -428,6 +428,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1821610120326920845, guid: 09bdc994d0b974b96ae3c42fe2e18b00, type: 3}
   m_PrefabInstance: {fileID: 120208570}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &124442724 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 69203887008308965, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
+  m_PrefabInstance: {fileID: 1705716358}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &129546225 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3238424478835687457, guid: 09bdc994d0b974b96ae3c42fe2e18b00, type: 3}
@@ -4717,6 +4722,10 @@ PrefabInstance:
       propertyPath: hudManager
       value: 
       objectReference: {fileID: 847135402}
+    - target: {fileID: 7970358388735130138, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
+      propertyPath: visual
+      value: 
+      objectReference: {fileID: 124442724}
     - target: {fileID: 7970358388735130138, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
       propertyPath: climbSpeed
       value: 4

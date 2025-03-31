@@ -2517,6 +2517,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2038088361}
     - target: {fileID: 7970358388735130138, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
+      propertyPath: visual
+      value: 
+      objectReference: {fileID: 971736014}
+    - target: {fileID: 7970358388735130138, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
       propertyPath: climbSpeed
       value: 4
       objectReference: {fileID: 0}
@@ -2581,6 +2585,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
+--- !u!4 &971736014 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 69203887008308965, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
+  m_PrefabInstance: {fileID: 971736013}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &975972413
 PrefabInstance:
   m_ObjectHideFlags: 0
