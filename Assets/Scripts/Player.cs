@@ -12,15 +12,17 @@ public class Player : MonoBehaviour
 
     [Header("Clone Summoning")]
     public GameObject neutralClonePrefab;
+    public GameObject guardClonePrefab;
     public Transform cloneSpawnPoint;
     private GameObject activeNeutralClone;
+    private GameObject activeGuardClone;
 
     [Header("Movement Settings")]
     [SerializeField] private float speed = 1.25f;
     [SerializeField] private float jumpForce = 2.5f;
 
     [Header("Visual Reference")]
-    public Transform visual; // assign in Inspector
+    public Transform visual;
     private Animator animator;
 
     private Rigidbody rb;
@@ -29,7 +31,6 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool isBoosted = false;
 
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -37,7 +38,6 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         animator = visual.GetComponent<Animator>();
         hudManager.SetLives(lives);
-
     }
 
     private void Update()
@@ -55,7 +55,6 @@ public class Player : MonoBehaviour
             visual.localScale = new Vector3(1, 1, 1);
             velocity.x = -speed;
             isMoving = true;
-
             FlipCloneSpawnPoint(false);
         }
         else if (input.Right)
@@ -63,7 +62,6 @@ public class Player : MonoBehaviour
             visual.localScale = new Vector3(-1, 1, 1);
             velocity.x = speed;
             isMoving = true;
-
             FlipCloneSpawnPoint(true);
         }
         else
@@ -80,16 +78,23 @@ public class Player : MonoBehaviour
         }
 
         rb.linearVelocity = velocity;
-
         animator.SetBool("isRunning", isMoving);
         animator.SetBool("isJumping", midJump);
 
-        if (Input.GetKeyDown(KeyCode.E) && activeNeutralClone == null)
+        // Clone summoning logic
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            SummonNeutralClone();
+            if ((input.Left || input.Right) && activeGuardClone == null)
+            {
+                float dir = input.Left ? -1f : 1f;
+                SummonGuardClone(dir);
+            }
+            else if (activeNeutralClone == null)
+            {
+                SummonNeutralClone();
+            }
         }
     }
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -110,8 +115,9 @@ public class Player : MonoBehaviour
 
         currentHealth -= amount;
         animator.SetTrigger("Hit");
-        Debug.Log("Player took damage. Current HP: " + currentHealth);
         hudManager.SetHealth(currentHealth);
+        Debug.Log("Player took damage. Current HP: " + currentHealth);
+
         if (currentHealth <= 0)
         {
             Die();
@@ -131,12 +137,10 @@ public class Player : MonoBehaviour
         else
         {
             Debug.Log("Game Over!");
-            GameManager.Instance.LoadGameOverScene(); // 👈 Goes to GameOver scene now
+            GameManager.Instance.LoadGameOverScene();
             Destroy(gameObject);
         }
     }
-
-
 
     private void Respawn()
     {
@@ -144,10 +148,10 @@ public class Player : MonoBehaviour
         hudManager.SetHealth(currentHealth);
         hudManager.SetLives(lives);
         GameObject spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn");
+
         if (spawnPoint != null)
         {
             transform.position = spawnPoint.transform.position;
-            Debug.Log("Player respawned at spawn point.");
         }
         else
         {
@@ -157,15 +161,68 @@ public class Player : MonoBehaviour
 
     private void SummonNeutralClone()
     {
-        GameObject clone = Instantiate(neutralClonePrefab, cloneSpawnPoint.position, Quaternion.identity);
+        Vector3 spawnPos = cloneSpawnPoint.position;
+        RaycastHit hit;
+        int platformLayer = LayerMask.GetMask("Platform");
+
+        if (Physics.Raycast(spawnPos + Vector3.up * 0.5f, Vector3.down, out hit, 2f, platformLayer))
+        {
+            spawnPos.y = hit.point.y + 0.1f;
+        }
+
+        GameObject clone = Instantiate(neutralClonePrefab, spawnPos, Quaternion.identity);
         activeNeutralClone = clone;
 
+        Transform cloneVisual = clone.transform.Find("visual");
+        if (cloneVisual != null)
+        {
+            float playerFacing = visual.localScale.x;
+            cloneVisual.localScale = new Vector3(-playerFacing, cloneVisual.localScale.y, cloneVisual.localScale.z);
+        }
+
         clone.GetComponent<NeutralClone>().playerScript = this;
+    }
+
+    private void SummonGuardClone(float direction)
+    {
+        if (activeGuardClone != null) return;
+
+        Vector3 spawnPos = cloneSpawnPoint.position;
+        GameObject clone = Instantiate(guardClonePrefab, spawnPos, Quaternion.identity);
+
+        Vector3 walkDirection = new Vector3(direction, 0, 0);
+        var guard = clone.GetComponent<GuardClone>();
+        guard.Initialize(walkDirection);
+
+        RaycastHit hit;
+        int platformLayer = LayerMask.GetMask("Platform");
+
+        if (Physics.Raycast(clone.transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 3f, platformLayer))
+        {
+            float heightOffset = 0.01f;
+
+            Renderer rend = clone.GetComponentInChildren<Renderer>();
+            if (rend != null)
+            {
+                heightOffset = rend.bounds.extents.y;
+            }
+
+            Vector3 correctedPos = clone.transform.position;
+            correctedPos.y = hit.point.y + heightOffset;
+            clone.transform.position = correctedPos;
+        }
+
+        activeGuardClone = clone;
     }
 
     public void ClearNeutralClone()
     {
         activeNeutralClone = null;
+    }
+
+    public void ClearGuardClone()
+    {
+        activeGuardClone = null;
     }
 
     private void FlipCloneSpawnPoint(bool facingLeft)
@@ -174,5 +231,4 @@ public class Player : MonoBehaviour
         spawnLocalPos.x = Mathf.Abs(spawnLocalPos.x) * (facingLeft ? -1 : 1);
         cloneSpawnPoint.localPosition = spawnLocalPos;
     }
-
 }

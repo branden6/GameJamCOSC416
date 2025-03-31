@@ -262,3 +262,5 @@ MonoBehaviour:
   speed: 1.25
   jumpForce: 2.5
   visual: {fileID: 69203887008308965}
+  isBoosted: 0
+  guardClonePrefab: {fileID: 4852276548703688671, guid: 4868908f7db1cf8409442bf7dd6de3c0, type: 3}
