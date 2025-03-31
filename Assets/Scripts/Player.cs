@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool isBoosted = false;
 
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -37,7 +36,6 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         animator = visual.GetComponent<Animator>();
         hudManager.SetLives(lives);
-
     }
 
     private void Update()
@@ -90,7 +88,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("platform"))
@@ -131,12 +128,10 @@ public class Player : MonoBehaviour
         else
         {
             Debug.Log("Game Over!");
-            GameManager.Instance.LoadGameOverScene(); // 👈 Goes to GameOver scene now
+            GameManager.Instance.LoadGameOverScene();
             Destroy(gameObject);
         }
     }
-
-
 
     private void Respawn()
     {
@@ -157,18 +152,31 @@ public class Player : MonoBehaviour
 
     private void SummonNeutralClone()
     {
-        GameObject clone = Instantiate(neutralClonePrefab, cloneSpawnPoint.position, Quaternion.identity);
+        Vector3 spawnPos = cloneSpawnPoint.position;
+
+        
+        RaycastHit hit;
+        int platformLayer = LayerMask.GetMask("Platform");
+
+        if (Physics.Raycast(spawnPos, Vector3.down, out hit, 2f, platformLayer))
+        {
+            spawnPos.y = hit.point.y + 0.1f;
+        }
+
+        GameObject clone = Instantiate(neutralClonePrefab, spawnPos, Quaternion.identity);
         activeNeutralClone = clone;
 
-        // Flip clone visual to match player
+        // Flip visual to face the player
         Transform cloneVisual = clone.transform.Find("visual");
         if (cloneVisual != null)
         {
-            cloneVisual.localScale = visual.localScale; // match player facing direction
+            float playerFacing = visual.localScale.x;
+            cloneVisual.localScale = new Vector3(-playerFacing, cloneVisual.localScale.y, cloneVisual.localScale.z);
         }
 
         clone.GetComponent<NeutralClone>().playerScript = this;
     }
+
 
     public void ClearNeutralClone()
     {
@@ -181,5 +189,4 @@ public class Player : MonoBehaviour
         spawnLocalPos.x = Mathf.Abs(spawnLocalPos.x) * (facingLeft ? -1 : 1);
         cloneSpawnPoint.localPosition = spawnLocalPos;
     }
-
 }
