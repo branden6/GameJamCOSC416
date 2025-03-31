@@ -32,6 +32,9 @@ public class Player : MonoBehaviour
     [Header("Sound Effects")]
     public float footstepTimer = 0f;
     public float footstepInterval = 0.25f;
+    public float ladderTimer = 0f;
+    public float ladderInterval = 5f;
+    public bool isOnLadder = false;
 
     [HideInInspector]
     public bool isBoosted = false;
@@ -90,6 +93,7 @@ public class Player : MonoBehaviour
             midJump = true;
             animator.SetTrigger("Jump");
             input.ResetJump();
+            AudioManager.Instance.PlaySFX("Ladder1");
         }
 
         rb.linearVelocity = velocity;
@@ -119,6 +123,43 @@ public class Player : MonoBehaviour
             animator.SetBool("isJumping", false);
         }
     }
+
+private void OnTriggerEnter(Collider other)
+{
+    if (other.CompareTag("ladder"))
+    {
+        isOnLadder = true;
+        ladderTimer = 0f;
+    }
+}
+
+private void OnTriggerStay(Collider other)
+{
+    if (other.CompareTag("ladder") && isOnLadder)
+    {
+        if (Mathf.Abs(rb.linearVelocity.y) > 0.1f) 
+        {
+            ladderTimer += Time.deltaTime;
+            if (ladderTimer >= ladderInterval)
+            {
+                AudioManager.Instance.PlaySFX("Ladder1");
+                ladderTimer = 0f;
+            }
+        }
+    }
+}
+
+
+private void OnTriggerExit(Collider other)
+{
+    if (other.CompareTag("ladder"))
+    {
+        isOnLadder = false;
+        ladderTimer = 0f;
+    }
+}
+
+
 
     public void TakeDamage(int amount)
     {

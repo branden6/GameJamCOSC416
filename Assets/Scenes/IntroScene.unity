@@ -1627,8 +1627,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 919f8010bb9c20940ab043b15fc09020, type: 3}
   - name: Inventory
     clip: {fileID: 8300000, guid: b73832a9c6642ef4488f13d5c5606de7, type: 3}
-  - name: Inventory
-    clip: {fileID: 8300000, guid: b73832a9c6642ef4488f13d5c5606de7, type: 3}
+  - name: Jump
+    clip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+  - name: Ladder1
+    clip: {fileID: 8300000, guid: e8f0af41c49204830baee3dbfe8ae52c, type: 3}
+  - name: Ladder2
+    clip: {fileID: 8300000, guid: 0a3756f20723c4f3fa054458ad910ad6, type: 3}
+  - name: Ladder3
+    clip: {fileID: 8300000, guid: b7d152e7f31b54a17b3fa5efa90a1f2c, type: 3}
   footsteps:
   - name: 
     clip: {fileID: 8300000, guid: 05a08dd4ee0c046a6b56466d5c9aa9b8, type: 3}
