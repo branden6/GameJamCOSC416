@@ -4,6 +4,8 @@ public class LadderClimb : MonoBehaviour
 {
     private bool onLadder = false;
     private Rigidbody rb;
+    private Animator animator;
+    public Transform visual;
     [SerializeField] private float climbSpeed = 0.75f;
 
     private UserInput input;
@@ -11,6 +13,7 @@ public class LadderClimb : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = visual.GetComponent<Animator>();
         input = FindObjectOfType<UserInput>();
     }
 
@@ -38,6 +41,7 @@ public class LadderClimb : MonoBehaviour
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, 0);
         }
+        animator.SetBool("climbing", true);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,6 +58,7 @@ public class LadderClimb : MonoBehaviour
         {
             onLadder = false;
             rb.useGravity = true;
+            animator.SetBool("climbing", false);
         }
     }
 }
