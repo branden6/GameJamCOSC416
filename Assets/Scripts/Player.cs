@@ -160,6 +160,13 @@ public class Player : MonoBehaviour
         GameObject clone = Instantiate(neutralClonePrefab, cloneSpawnPoint.position, Quaternion.identity);
         activeNeutralClone = clone;
 
+        // Flip clone visual to match player
+        Transform cloneVisual = clone.transform.Find("visual");
+        if (cloneVisual != null)
+        {
+            cloneVisual.localScale = visual.localScale; // match player facing direction
+        }
+
         clone.GetComponent<NeutralClone>().playerScript = this;
     }
 

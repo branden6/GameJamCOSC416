@@ -8,12 +8,13 @@ public class NeutralClone : MonoBehaviour
     private bool playerNearby = false;
     [HideInInspector]
 
-
+    private Animator animator;
     private GameObject player;
     public Player playerScript;
 
     private void Start()
     {
+        animator = transform.Find("Visual").GetComponent<Animator>();
         StartCoroutine(PopInEffect());
     }
 
@@ -31,11 +32,17 @@ public class NeutralClone : MonoBehaviour
         {
             Rigidbody playerRb = player.GetComponent<Rigidbody>();
 
+            if (animator != null)
+            {
+                animator.SetTrigger("vault");
+            }
+
             playerRb.AddForce(Vector3.up * vaultForce, ForceMode.Impulse);
             Debug.Log("Vault Triggered: Force Applied = " + vaultForce);
 
             StartCoroutine(TemporarilyDisablePlatformCollision(player));
         }
+        
     }
 
 
@@ -45,6 +52,7 @@ public class NeutralClone : MonoBehaviour
         {
             playerNearby = true;
             player = other.gameObject;
+            animator.SetBool("infront", true);
         }
     }
 
@@ -54,6 +62,7 @@ public class NeutralClone : MonoBehaviour
         {
             playerNearby = false;
             player = null;
+            animator.SetBool("infront", false);
         }
     }
 
