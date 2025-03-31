@@ -17,40 +17,40 @@ public class LadderClimb : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = visual.GetComponent<Animator>();
-        input = FindObjectOfType<UserInput>(); // Note: Use FindFirstObjectByType if on Unity 2023+
+        input = FindObjectOfType<UserInput>();
     }
 
     private void Update()
     {
         bool isTouchingLadder = IsTouchingLadder();
         bool isGrounded = IsGrounded();
-
         float verticalInput = input.Up ? 1f : input.Down ? -1f : 0f;
 
+        // Only climb if we're touching ladder, NOT grounded, and moving vertically
         if (isTouchingLadder && !isGrounded && verticalInput != 0f)
         {
-            // Actively climbing
             rb.useGravity = false;
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, verticalInput * climbSpeed, 0f);
             animator.SetBool("climbing", true);
-            animator.SetFloat("climbSpeed", 1f); // play animation
+            animator.SetFloat("climbSpeed", 1f);
         }
-        else if (isTouchingLadder && !isGrounded)
+        // Pause on ladder mid-air
+        else if (animator.GetBool("climbing") && isTouchingLadder && !isGrounded)
         {
-            // On ladder but not moving
-            rb.useGravity = false;
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, 0f);
+            rb.useGravity = false;
             animator.SetBool("climbing", true);
-            animator.SetFloat("climbSpeed", 0f); // pause animation
+            animator.SetFloat("climbSpeed", 0f);
         }
+        // Not climbing
         else
         {
-            // Not climbing
             rb.useGravity = true;
             animator.SetBool("climbing", false);
-            animator.SetFloat("climbSpeed", 1f); // normal animation speed
+            animator.SetFloat("climbSpeed", 1f);
         }
     }
+
 
     private bool IsTouchingLadder()
     {
@@ -62,8 +62,11 @@ public class LadderClimb : MonoBehaviour
 
     private bool IsGrounded()
     {
-        Vector3 origin = transform.position + Vector3.up * 0.1f;
-        return Physics.Raycast(origin, Vector3.down, groundCheckDistance, groundLayer);
+        Vector3 origin = transform.position + Vector3.down * 0.05f;
+        float rayLength = groundCheckDistance;
+
+        Debug.DrawRay(origin, Vector3.down * rayLength, Color.red);
+        return Physics.Raycast(origin, Vector3.down, rayLength, groundLayer);
     }
 
     private void OnDrawGizmosSelected()
