@@ -162,26 +162,45 @@ public class Player : MonoBehaviour
     private void SummonNeutralClone()
     {
         Vector3 spawnPos = cloneSpawnPoint.position;
-        RaycastHit hit;
-        int platformLayer = LayerMask.GetMask("Platform");
+        float heightOffset = 0.3f;
 
-        if (Physics.Raycast(spawnPos + Vector3.up * 0.5f, Vector3.down, out hit, 2f, platformLayer))
+        RaycastHit[] hits = Physics.SphereCastAll(spawnPos + Vector3.up * 0.5f, 0.3f, Vector3.down, 10f);
+        RaycastHit? closestPlatformHit = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (var hit in hits)
         {
-            spawnPos.y = hit.point.y + 0.1f;
+            if (hit.collider.CompareTag("platform") && hit.distance < closestDistance)
+            {
+                closestPlatformHit = hit;
+                closestDistance = hit.distance;
+            }
         }
 
-        GameObject clone = Instantiate(neutralClonePrefab, spawnPos, Quaternion.identity);
-        activeNeutralClone = clone;
-
-        Transform cloneVisual = clone.transform.Find("visual");
-        if (cloneVisual != null)
+        if (closestPlatformHit.HasValue)
         {
-            float playerFacing = visual.localScale.x;
-            cloneVisual.localScale = new Vector3(-playerFacing, cloneVisual.localScale.y, cloneVisual.localScale.z);
-        }
+            RaycastHit hit = closestPlatformHit.Value;
+            spawnPos.y = hit.point.y + heightOffset;
 
-        clone.GetComponent<NeutralClone>().playerScript = this;
+            GameObject clone = Instantiate(neutralClonePrefab, spawnPos, Quaternion.identity);
+            activeNeutralClone = clone;
+
+            clone.transform.up = hit.normal;
+
+            // Flip visual direction
+            Transform cloneVisual = clone.transform.Find("Visual");
+            if (cloneVisual != null)
+            {
+                float playerFacing = visual.localScale.x;
+                cloneVisual.localScale = new Vector3(-playerFacing * 3f, cloneVisual.localScale.y, cloneVisual.localScale.z);
+            }
+
+            clone.GetComponent<NeutralClone>().playerScript = this;
+        }
     }
+
+
+
 
     private void SummonGuardClone(float direction)
     {
