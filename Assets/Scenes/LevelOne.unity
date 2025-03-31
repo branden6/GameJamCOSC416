@@ -3865,6 +3865,10 @@ PrefabInstance:
       value: platform
       objectReference: {fileID: 0}
     - target: {fileID: 1824045352620645791, guid: b6b48e87516ef429585c5c62bedead6f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 32.71876
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824045352620645791, guid: b6b48e87516ef429585c5c62bedead6f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3902,6 +3906,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1824045352620645791, guid: b6b48e87516ef429585c5c62bedead6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048419346075463614, guid: b6b48e87516ef429585c5c62bedead6f, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048419346075463614, guid: b6b48e87516ef429585c5c62bedead6f, type: 3}
+      propertyPath: m_SpriteTileMode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
