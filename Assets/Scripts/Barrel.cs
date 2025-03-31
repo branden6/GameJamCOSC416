@@ -26,29 +26,29 @@ public class Barrel : MonoBehaviour
         if (collision.gameObject.CompareTag("borderR"))
         {
             // 15% chance to ignore collision (roll through)
-            if (Random.value < 0.10f)
-            {
-                StartCoroutine(TemporarilyIgnoreCollision(collision.collider));
-            }
-            else
-            {
+            // if (Random.value < 0.10f)
+            // {
+            //     StartCoroutine(TemporarilyIgnoreCollision(collision.collider));
+            // }
+            // else
+            // {
                 // Otherwise, reverse direction and apply a downward impulse
                 horizontalDirection = -1;
                 rb.AddForce(new Vector3(0, -dropForce, 0), ForceMode.VelocityChange);
-            }
+            // }
         }
         // Check for collision with the left border
         else if (collision.gameObject.CompareTag("borderL"))
         {
-            if (Random.value < 0.10f)
-            {
-                StartCoroutine(TemporarilyIgnoreCollision(collision.collider));
-            }
-            else
-            {
+            // if (Random.value < 0.10f)
+            // {
+            //     StartCoroutine(TemporarilyIgnoreCollision(collision.collider));
+            // }
+            // else
+            // {
                 horizontalDirection = 1;
                 rb.AddForce(new Vector3(0, -dropForce, 0), ForceMode.VelocityChange);
-            }
+            // }
         }
     }
 

@@ -52,9 +52,17 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b686433ee88a94adbacafb2a5eae46cf, type: 2}
+    - target: {fileID: -2128157025190704056, guid: cddc38ff83a2749a6a775ab1fe453f06, type: 3}
+      propertyPath: m_TagString
+      value: ladder
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cddc38ff83a2749a6a775ab1fe453f06, type: 3}
       propertyPath: m_Name
       value: Chopped Ladder 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cddc38ff83a2749a6a775ab1fe453f06, type: 3}
+      propertyPath: m_TagString
+      value: ladder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -62,5 +70,34 @@ PrefabInstance:
     - {fileID: 5148817236446094103, guid: cddc38ff83a2749a6a775ab1fe453f06, type: 3}
     - {fileID: -7029948723529949830, guid: cddc38ff83a2749a6a775ab1fe453f06, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -2128157025190704056, guid: cddc38ff83a2749a6a775ab1fe453f06, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2977292389197591303}
   m_SourcePrefab: {fileID: 100100000, guid: cddc38ff83a2749a6a775ab1fe453f06, type: 3}
+--- !u!1 &3370630090885316041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2128157025190704056, guid: cddc38ff83a2749a6a775ab1fe453f06, type: 3}
+  m_PrefabInstance: {fileID: 5526381026923229569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2977292389197591303
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3370630090885316041}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009756204, y: 0.0010274695, z: 0.007115847}
+  m_Center: {x: -0.000000004656613, y: -0.00000070943486, z: 0.02869373}
