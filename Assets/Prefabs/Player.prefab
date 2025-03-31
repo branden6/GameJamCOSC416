@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b466efcc000941cd826779a74d03147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  climbSpeed: 0.8
+  climbSpeed: 4
 --- !u!114 &7363648586181551928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,8 +259,9 @@ MonoBehaviour:
   hudManager: {fileID: 0}
   neutralClonePrefab: {fileID: 198813387838526515, guid: d86b48693a7339040a300fb92fafcf35, type: 3}
   cloneSpawnPoint: {fileID: 4847968933232643082}
-  speed: 1.25
-  jumpForce: 2.5
+  speed: 5
+  jumpForce: 5.25
   visual: {fileID: 69203887008308965}
   isBoosted: 0
   guardClonePrefab: {fileID: 4852276548703688671, guid: 4868908f7db1cf8409442bf7dd6de3c0, type: 3}
+
