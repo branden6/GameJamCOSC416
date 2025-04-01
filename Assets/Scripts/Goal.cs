@@ -10,11 +10,13 @@ public class Goal : MonoBehaviour
         if (!levelComplete && other.CompareTag("Player"))
         {
             levelComplete = true;
+            AudioManager.Instance.PlaySFX("Success");
 
             HUDManager hud = FindObjectOfType<HUDManager>();
             if (hud != null)
             {
                 hud.AddScore(1000);
+                // No need to set level here — GameManager will do it on scene load
             }
 
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
