@@ -69,7 +69,21 @@ public class AudioManager : MonoBehaviour
     public int getFootstepNumber(){
     return UnityEngine.Random.Range(0, footsteps.Length-1);
 }
+    public void ToggleMusic(){
+        musicSource.mute = !musicSource.mute;
+    }
+    public void ToggleSFX(){
+        sfxSource.mute = !sfxSource.mute;
+        footstepSource.mute=!footstepSource.mute;
+        backgroundSource.mute = !backgroundSource.mute;
+    }
+    public void MusicVolume(float volume){
+        musicSource.volume = volume;
+    }
+    public void SFXVolume(float volume){
+        sfxSource.volume=volume;
+        footstepSource.volume=volume;
+        backgroundSource.volume = volume;
 
-
-    
+    }
 }
