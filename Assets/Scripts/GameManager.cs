@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public float vaultDuration = 0.3f;
+
     public int firstPlayableLevelBuildIndex = 5;
 
     public static GameManager Instance { get; private set; }
@@ -23,18 +25,36 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // Update level index based on scene build index
-        currentLevelIndex = scene.buildIndex;
+   private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+{
 
-        // Update the HUD if it exists in the new scene
-        HUDManager hud = FindObjectOfType<HUDManager>();
-        if (hud != null)
-        {
-            hud.UpdateHUD();
-        }
+    currentLevelIndex = scene.buildIndex;
+    
+    switch (currentLevelIndex)
+    {
+        case 6: 
+        case 7: 
+            vaultDuration = 0.3f;
+            break;
+        case 8: 
+        case 9: 
+            vaultDuration = 0.9f;
+            break;
+        default:
+            vaultDuration = 0.3f; 
+            break;
     }
+
+    // Update the HUD if it exists in the new scene
+    HUDManager hud = FindObjectOfType<HUDManager>();
+    if (hud != null)
+    {
+        hud.UpdateHUD();
+    }
+
+    Debug.Log("Vault duration set to: " + vaultDuration);
+}
+
 
     public void DestroyBarrel(GameObject barrel)
     {
