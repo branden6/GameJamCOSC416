@@ -10,6 +10,7 @@ public class Goal : MonoBehaviour
         if (!levelComplete && other.CompareTag("Player"))
         {
             levelComplete = true;
+            AudioManager.Instance.PlaySFX("Success");
 
             HUDManager hud = FindObjectOfType<HUDManager>();
             if (hud != null)

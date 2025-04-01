@@ -173,7 +173,7 @@ private void OnTriggerExit(Collider other)
         animator.SetTrigger("Hit");
         hudManager.SetHealth(currentHealth);
         Debug.Log("Player took damage. Current HP: " + currentHealth);
-        AudioManager.Instance.sfxSource.volume = 0.5f;
+        AudioManager.Instance.sfxSource.volume = 0.35f;
         AudioManager.Instance.PlaySFX("Hit");
         AudioManager.Instance.sfxSource.volume = 1f;
 
@@ -188,7 +188,7 @@ private void OnTriggerExit(Collider other)
         lives--;
         animator.SetTrigger("Die");
         Debug.Log("Player died. Lives remaining: " + lives);
-        AudioManager.Instance.PlaySFX("Hit");
+        AudioManager.Instance.PlaySFX("Low Health");
 
         if (lives > 0)
         {

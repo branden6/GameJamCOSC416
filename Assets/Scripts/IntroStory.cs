@@ -49,7 +49,6 @@ public class IntroStory : MonoBehaviour
 
         yield return new WaitUntil(() => Input.anyKeyDown);
         AudioManager.Instance.musicSource.UnPause();
-        AudioManager.Instance.backgroundSource.UnPause();
         SceneManager.LoadScene("LevelOne");
 
     }

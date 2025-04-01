@@ -70,6 +70,7 @@ public class PauseManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
+        pauseMenuUI.SetActive(false);
         SceneManager.LoadScene("IntroScene");
         AudioManager.Instance.PlaySFX("Inventory");
     }
