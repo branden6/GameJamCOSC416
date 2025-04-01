@@ -47,7 +47,7 @@ public class HUDManager : MonoBehaviour
     {
         scoreText.text = "SCORE: " + GameManager.Instance.score.ToString("D6");
         timerText.text = "TIME: " + Mathf.CeilToInt(timeRemaining).ToString();
-        int levelNumber = GameManager.Instance.currentLevelIndex - GameManager.Instance.firstPlayableLevelBuildIndex;
+        int levelNumber = GameManager.Instance.currentLevelIndex - GameManager.Instance.firstPlayableLevelBuildIndex + 4;
         levelText.text = "LEVEL: " + levelNumber;
         timerText.color = timeRemaining <= 60f ? Color.red : Color.white;
     }
