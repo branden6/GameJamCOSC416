@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class NeutralClone : MonoBehaviour
 {
+    private float duration => GameManager.Instance.vaultDuration;
+
     public float vaultForce = 0.0000001f;
     private bool playerNearby = false;
 
@@ -86,7 +88,6 @@ public class NeutralClone : MonoBehaviour
         Vector3 targetScale = new Vector3(3, 3, 1);
         target.localScale = Vector3.zero;
 
-        float duration = 0.3f;
         float elapsed = 0;
         while (elapsed < duration)
         {
@@ -117,7 +118,7 @@ public class NeutralClone : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(duration);
 
         foreach (Collider platformCollider in ignored)
         {
