@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 897977829862656248}
   - component: {fileID: 437975264440413782}
   - component: {fileID: 556332594310877579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Girder
   m_TagString: platform
   m_Icon: {fileID: 0}

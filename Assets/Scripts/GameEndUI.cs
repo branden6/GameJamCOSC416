@@ -20,7 +20,7 @@ public class GameEndUI : MonoBehaviour
 
     if (SceneManager.GetActiveScene().name == "GameWon")
     {
-        messageToShow = "You Got All the BANANAS!!";
+        messageToShow = "You Got The BANANA!!";
         AudioManager.Instance.ChangeMusicPitch(1.34f);
     }
     else {

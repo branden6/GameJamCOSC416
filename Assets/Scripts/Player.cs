@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Player : MonoBehaviour
     public Transform cloneSpawnPoint;
     private GameObject activeNeutralClone;
     private GameObject activeGuardClone;
+
+    private bool canSummonNeutralClone = true;
+    private bool cooldownRunning = false;
+    public float neutralCloneCooldown = 10.0f;
 
     [Header("Movement Settings")]
     [SerializeField] private float speed = 1.25f;
@@ -108,9 +113,14 @@ public class Player : MonoBehaviour
                 float dir = input.Left ? -1f : 1f;
                 SummonGuardClone(dir);
             }
-            else if (activeNeutralClone == null)
+            else if (canSummonNeutralClone)
             {
-                SummonNeutralClone();
+                if (activeNeutralClone == null)
+                {
+                    SummonNeutralClone();
+                }
+
+                StartCoroutine(NeutralCloneCooldownTimer());
             }
         }
     }
@@ -163,11 +173,7 @@ private void OnTriggerExit(Collider other)
 
     public void TakeDamage(int amount)
     {
-        if (isBoosted)
-        {
-            Debug.Log("Player is boosted — no damage taken!");
-            return;
-        }
+        if (isBoosted) return;
 
         currentHealth -= amount;
         animator.SetTrigger("Hit");
@@ -208,15 +214,12 @@ private void OnTriggerExit(Collider other)
         currentHealth = maxHealth;
         hudManager.SetHealth(currentHealth);
         hudManager.SetLives(lives);
+
         GameObject spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn");
 
         if (spawnPoint != null)
         {
             transform.position = spawnPoint.transform.position;
-        }
-        else
-        {
-            Debug.LogWarning("PlayerSpawn tag not found. Respawning in place.");
         }
     }
 
@@ -248,7 +251,6 @@ private void OnTriggerExit(Collider other)
 
             clone.transform.up = hit.normal;
 
-            // Flip visual direction
             Transform cloneVisual = clone.transform.Find("Visual");
             if (cloneVisual != null)
             {
@@ -260,8 +262,18 @@ private void OnTriggerExit(Collider other)
         }
     }
 
+    private IEnumerator NeutralCloneCooldownTimer()
+    {
+        if (cooldownRunning) yield break;
 
+        cooldownRunning = true;
+        canSummonNeutralClone = false;
 
+        yield return new WaitForSeconds(neutralCloneCooldown);
+
+        canSummonNeutralClone = true;
+        cooldownRunning = false;
+    }
 
     private void SummonGuardClone(float direction)
     {
