@@ -20,27 +20,34 @@ public class HUDManager : MonoBehaviour
     }
 
     private void Update()
+{
+    if (timerRunning)
     {
-        if (timerRunning)
+        timeRemaining -= Time.deltaTime;
+
+        if (timeRemaining <= 0)
         {
-            timeRemaining -= Time.deltaTime;
+            timeRemaining = 0;
+            timerRunning = false;
+            Debug.Log("Time's up! Game Over.");
 
-            if (timeRemaining <= 0)
+            // Trigger Game Over
+            if (GameManager.Instance != null)
             {
-                timeRemaining = 0;
-                timerRunning = false;
-                Debug.Log("Time's up! Game Over.");
+                GameManager.Instance.LoadGameOverScene();
             }
-
-            UpdateHUD();
         }
+
+        UpdateHUD();
     }
+}
+
 
     public void UpdateHUD()
     {
         scoreText.text = "SCORE: " + GameManager.Instance.score.ToString("D6");
         timerText.text = "TIME: " + Mathf.CeilToInt(timeRemaining).ToString();
-        int levelNumber = GameManager.Instance.currentLevelIndex - GameManager.Instance.firstPlayableLevelBuildIndex + 1;
+        int levelNumber = GameManager.Instance.currentLevelIndex - GameManager.Instance.firstPlayableLevelBuildIndex;
         levelText.text = "LEVEL: " + levelNumber;
         timerText.color = timeRemaining <= 60f ? Color.red : Color.white;
     }
