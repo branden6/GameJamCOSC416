@@ -20,6 +20,8 @@ public class IntroStory : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.musicSource.Pause();
+        AudioManager.Instance.backgroundSource.Pause();
         foreach (var text in slides)
         {
             SetAlpha(text, 0f);
@@ -54,6 +56,8 @@ public class IntroStory : MonoBehaviour
         dkTypewriter.BeginTyping();
 
         yield return new WaitUntil(() => Input.anyKeyDown);
+        AudioManager.Instance.musicSource.UnPause();
+        SceneManager.LoadScene("LevelOne");
         LoadNextScene();
     }
 
