@@ -86,4 +86,9 @@ public class AudioManager : MonoBehaviour
         backgroundSource.volume = volume;
 
     }
+
+    public void ChangeMusicPitch(float pitch){
+    musicSource.pitch = pitch;
+    }
+
 }

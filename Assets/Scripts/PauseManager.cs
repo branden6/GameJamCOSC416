@@ -45,6 +45,7 @@ public class PauseManager : MonoBehaviour
 
         Time.timeScale = isPaused ? 0f : 1f;
         pauseMenuUI.SetActive(isPaused);
+        AudioManager.Instance.PlaySFX("Pause");
     }
 
     public void ResumeGame()
@@ -52,26 +53,31 @@ public class PauseManager : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
+        AudioManager.Instance.PlaySFX("Play");
     }
 
     public void OpenHowToPlay()
     {
         howToPlayPanel.SetActive(true);
+        AudioManager.Instance.PlaySFX("Inventory");
     }
     public void CloseHowToPlay()
     {
         howToPlayPanel.SetActive(false);
+        AudioManager.Instance.PlaySFX("Inventory");
     }
 
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("IntroScene");
+        AudioManager.Instance.PlaySFX("Inventory");
     }
 
 public void QuitGame()
 {
     Debug.Log("Quit Game");
+    AudioManager.Instance.PlaySFX("Inventory");
 
 #if UNITY_EDITOR
     UnityEditor.EditorApplication.isPlaying = false;

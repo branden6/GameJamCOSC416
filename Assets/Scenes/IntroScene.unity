@@ -282,6 +282,10 @@ PrefabInstance:
       value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 1437893144764116606, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437893144764116606, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       propertyPath: MusicSlider
       value: 
       objectReference: {fileID: 1748440638}
@@ -289,6 +293,14 @@ PrefabInstance:
       propertyPath: SoundSlider
       value: 
       objectReference: {fileID: 1313956296}
+    - target: {fileID: 2069999327976554414, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 389941256}
+    - target: {fileID: 2069999327976554414, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 2759689824624200674, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       propertyPath: m_text
       value: 'Resume
@@ -351,6 +363,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -145
       objectReference: {fileID: 0}
+    - target: {fileID: 3950071816877658376, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 389941256}
+    - target: {fileID: 3950071816877658376, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseHowToPlay
+      objectReference: {fileID: 0}
     - target: {fileID: 4096366756181830205, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       propertyPath: m_VerticalAlignment
       value: 256
@@ -362,6 +382,14 @@ PrefabInstance:
     - target: {fileID: 4853731719567951170, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       propertyPath: m_VerticalAlignment
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538470318665072475, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 389941256}
+    - target: {fileID: 5538470318665072475, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
       objectReference: {fileID: 0}
     - target: {fileID: 5879393985970208341, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -382,6 +410,14 @@ PrefabInstance:
     - target: {fileID: 6632601688557445578, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -175
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437908089813979345, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 389941256}
+    - target: {fileID: 7437908089813979345, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenHowToPlay
       objectReference: {fileID: 0}
     - target: {fileID: 7589870273179618583, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       propertyPath: m_AnchorMax.y
@@ -435,6 +471,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 8767828313273954574, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 389941256}
+    - target: {fileID: 8767828313273954574, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
     - target: {fileID: 8919759815778108301, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 145.5
@@ -475,7 +519,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1437893144764116606, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5879393985970208341, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
@@ -491,21 +536,13 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1313956297}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 666216040305331341, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 389941256}
     - targetCorrespondingSourceObject: {fileID: 8276796850272696187, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 82688654}
   m_SourcePrefab: {fileID: 100100000, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
---- !u!114 &82688651 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1437893144764116606, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
-  m_PrefabInstance: {fileID: 82688650}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d65618c5a7d99491ab473723906292d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &82688652 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5879393985970208341, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
@@ -1067,6 +1104,27 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7941311972450816508, guid: 4be80df31d3a94401959d41f125968f8, type: 3}
   m_PrefabInstance: {fileID: 231958228}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &389941254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 666216040305331341, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+  m_PrefabInstance: {fileID: 82688650}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &389941256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389941254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65618c5a7d99491ab473723906292d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 82688653}
+  howToPlayPanel: {fileID: 1843633580}
+  MusicSlider: {fileID: 1748440638}
+  SoundSlider: {fileID: 1313956296}
 --- !u!1001 &433672970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1218,7 +1276,7 @@ PrefabInstance:
     - target: {fileID: 9142888176953642861, guid: 4be80df31d3a94401959d41f125968f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 82688651}
+      objectReference: {fileID: 389941256}
     - target: {fileID: 9142888176953642861, guid: 4be80df31d3a94401959d41f125968f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2048,9 +2106,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 82688651}
+      - m_Target: {fileID: 389941256}
         m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
-        m_MethodName: SFXVolume
+        m_MethodName: MusicVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2572,9 +2630,9 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0
-  m_Pitch: 1.19
-  Loop: 0
+  m_Volume: 0.5
+  m_Pitch: 1.1
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2882,7 +2940,7 @@ PrefabInstance:
     - target: {fileID: 9142888176953642861, guid: 4be80df31d3a94401959d41f125968f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 82688651}
+      objectReference: {fileID: 389941256}
     - target: {fileID: 9142888176953642861, guid: 4be80df31d3a94401959d41f125968f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3078,7 +3136,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 82688651}
+      - m_Target: {fileID: 389941256}
         m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
         m_MethodName: MusicVolume
         m_Mode: 1
@@ -3090,6 +3148,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1843633580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7941476016127037828, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+  m_PrefabInstance: {fileID: 82688650}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1850768285
 GameObject:
   m_ObjectHideFlags: 0
@@ -3175,6 +3238,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0a3756f20723c4f3fa054458ad910ad6, type: 3}
   - name: Ladder3
     clip: {fileID: 8300000, guid: b7d152e7f31b54a17b3fa5efa90a1f2c, type: 3}
+  - name: Hit
+    clip: {fileID: 8300000, guid: b9eff218e132a4e76be78840eca96fb2, type: 3}
+  - name: Game Over
+    clip: {fileID: 8300000, guid: 02e7201bba26d4edab939e0945dee281, type: 3}
+  - name: Success
+    clip: {fileID: 8300000, guid: f59afa3c71bf04d73a1cb2882788a437, type: 3}
+  - name: Low Health
+    clip: {fileID: 8300000, guid: 0d22db442b71c4ed5bbe58e8bcf7f93f, type: 3}
   footsteps:
   - name: 
     clip: {fileID: 8300000, guid: 05a08dd4ee0c046a6b56466d5c9aa9b8, type: 3}

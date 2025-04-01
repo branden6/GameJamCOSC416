@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
             midJump = true;
             animator.SetTrigger("Jump");
             input.ResetJump();
-            AudioManager.Instance.PlaySFX("Ladder1");
+            AudioManager.Instance.PlaySFX("Jump");
         }
 
         rb.linearVelocity = velocity;
@@ -173,6 +173,9 @@ private void OnTriggerExit(Collider other)
         animator.SetTrigger("Hit");
         hudManager.SetHealth(currentHealth);
         Debug.Log("Player took damage. Current HP: " + currentHealth);
+        AudioManager.Instance.sfxSource.volume = 0.5f;
+        AudioManager.Instance.PlaySFX("Hit");
+        AudioManager.Instance.sfxSource.volume = 1f;
 
         if (currentHealth <= 0)
         {
@@ -185,6 +188,7 @@ private void OnTriggerExit(Collider other)
         lives--;
         animator.SetTrigger("Die");
         Debug.Log("Player died. Lives remaining: " + lives);
+        AudioManager.Instance.PlaySFX("Hit");
 
         if (lives > 0)
         {
@@ -193,6 +197,7 @@ private void OnTriggerExit(Collider other)
         else
         {
             Debug.Log("Game Over!");
+            AudioManager.Instance.PlaySFX("Hit");
             GameManager.Instance.LoadGameOverScene();
             Destroy(gameObject);
         }

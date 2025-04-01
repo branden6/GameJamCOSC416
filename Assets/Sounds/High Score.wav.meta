@@ -1,18 +1,5 @@
 fileFormatVersion: 2
-guid: b9eff218e132a4e76be78840eca96fb2
-labels:
-- Audio
-- Casual
-- Sound
-- SFX
-- Effect
-AssetOrigin:
-  serializedVersion: 1
-  productId: 54116
-  packageName: FREE Casual Game SFX Pack
-  packageVersion: 1.1
-  assetPath: Assets/Casual Game Sounds U6/CasualGameSounds/DM-CGS-17.wav
-  uploadId: 688818
+guid: 774ef42b81c4f49b5bc1fd6f266b1e7b
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8
@@ -24,9 +11,9 @@ AudioImporter:
     compressionFormat: 1
     quality: 1
     conversionMode: 0
-    preloadAudioData: 1
+    preloadAudioData: 0
   platformSettingOverrides: {}
-  forceToMono: 1
+  forceToMono: 0
   normalize: 1
   loadInBackground: 0
   ambisonic: 0
