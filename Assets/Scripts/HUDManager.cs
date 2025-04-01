@@ -20,21 +20,28 @@ public class HUDManager : MonoBehaviour
     }
 
     private void Update()
+{
+    if (timerRunning)
     {
-        if (timerRunning)
+        timeRemaining -= Time.deltaTime;
+
+        if (timeRemaining <= 0)
         {
-            timeRemaining -= Time.deltaTime;
+            timeRemaining = 0;
+            timerRunning = false;
+            Debug.Log("Time's up! Game Over.");
 
-            if (timeRemaining <= 0)
+            // Trigger Game Over
+            if (GameManager.Instance != null)
             {
-                timeRemaining = 0;
-                timerRunning = false;
-                Debug.Log("Time's up! Game Over.");
+                GameManager.Instance.LoadGameOverScene();
             }
-
-            UpdateHUD();
         }
+
+        UpdateHUD();
     }
+}
+
 
     public void UpdateHUD()
     {
