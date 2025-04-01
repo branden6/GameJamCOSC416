@@ -5549,6 +5549,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -250
       objectReference: {fileID: 0}
+    - target: {fileID: 2759689824624200674, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
+      propertyPath: m_text
+      value: Resume
+      objectReference: {fileID: 0}
     - target: {fileID: 3185872108502935409, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -5599,11 +5603,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5879393985970208341, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5879393985970208341, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 395
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7589870273179618583, guid: 6fe5d6cbbe20b471c9bcde75c5f41bdf, type: 3}
       propertyPath: m_AnchorMax.y
