@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Player : MonoBehaviour
     public Transform cloneSpawnPoint;
     private GameObject activeNeutralClone;
     private GameObject activeGuardClone;
+
+    private bool canSummonNeutralClone = true;
+    private bool cooldownRunning = false;
+    public float neutralCloneCooldown = 10.0f;
 
     [Header("Movement Settings")]
     [SerializeField] private float speed = 1.25f;
@@ -89,9 +94,14 @@ public class Player : MonoBehaviour
                 float dir = input.Left ? -1f : 1f;
                 SummonGuardClone(dir);
             }
-            else if (activeNeutralClone == null)
+            else if (canSummonNeutralClone)
             {
-                SummonNeutralClone();
+                if (activeNeutralClone == null)
+                {
+                    SummonNeutralClone();
+                }
+
+                StartCoroutine(NeutralCloneCooldownTimer());
             }
         }
     }
@@ -107,16 +117,11 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (isBoosted)
-        {
-            Debug.Log("Player is boosted — no damage taken!");
-            return;
-        }
+        if (isBoosted) return;
 
         currentHealth -= amount;
         animator.SetTrigger("Hit");
         hudManager.SetHealth(currentHealth);
-        Debug.Log("Player took damage. Current HP: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -128,7 +133,6 @@ public class Player : MonoBehaviour
     {
         lives--;
         animator.SetTrigger("Die");
-        Debug.Log("Player died. Lives remaining: " + lives);
 
         if (lives > 0)
         {
@@ -136,7 +140,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.Log("Game Over!");
             GameManager.Instance.LoadGameOverScene();
             Destroy(gameObject);
         }
@@ -147,15 +150,12 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         hudManager.SetHealth(currentHealth);
         hudManager.SetLives(lives);
+
         GameObject spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn");
 
         if (spawnPoint != null)
         {
             transform.position = spawnPoint.transform.position;
-        }
-        else
-        {
-            Debug.LogWarning("PlayerSpawn tag not found. Respawning in place.");
         }
     }
 
@@ -187,7 +187,6 @@ public class Player : MonoBehaviour
 
             clone.transform.up = hit.normal;
 
-            // Flip visual direction
             Transform cloneVisual = clone.transform.Find("Visual");
             if (cloneVisual != null)
             {
@@ -199,8 +198,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    private IEnumerator NeutralCloneCooldownTimer()
+    {
+        if (cooldownRunning) yield break;
 
+        cooldownRunning = true;
+        canSummonNeutralClone = false;
 
+        yield return new WaitForSeconds(neutralCloneCooldown);
+
+        canSummonNeutralClone = true;
+        cooldownRunning = false;
+    }
 
     private void SummonGuardClone(float direction)
     {
