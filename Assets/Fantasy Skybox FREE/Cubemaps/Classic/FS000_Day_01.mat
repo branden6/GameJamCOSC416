@@ -65,7 +65,9 @@ Material:
     - _Mapping: 1
     - _MirrorOnBack: 0
 
+
     - _Rotation: 0.28915295
+
 
     m_Colors:
     - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}

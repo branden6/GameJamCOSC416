@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: ladder
       objectReference: {fileID: 0}
+    - target: {fileID: 4210965255248954314, guid: b8b5d16fc40514145bfca79c66bdc0b9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 94f981ce6e1334b8381a631d86fc26bc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: b8b5d16fc40514145bfca79c66bdc0b9, type: 3}
