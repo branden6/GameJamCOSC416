@@ -17,9 +17,14 @@ public class GameEndUI : MonoBehaviour
 
     string messageToShow = defaultMessage;
 
+
     if (SceneManager.GetActiveScene().name == "GameWon")
     {
         messageToShow = "You Got The BANANA!!";
+        AudioManager.Instance.ChangeMusicPitch(1.34f);
+    }
+    else {
+        AudioManager.Instance.ChangeMusicPitch(0.48f);
     }
 
     Setup(messageToShow, finalScore);
@@ -46,6 +51,7 @@ public class GameEndUI : MonoBehaviour
         }
 
         SceneManager.LoadScene("IntroScene");
+        AudioManager.Instance.ChangeMusicPitch(1.07f);
     }
 
     public void QuitGame()
