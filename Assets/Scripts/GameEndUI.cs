@@ -19,7 +19,7 @@ public class GameEndUI : MonoBehaviour
 
     if (SceneManager.GetActiveScene().name == "GameWon")
     {
-        messageToShow = "You Got All the BANANAS!!";
+        messageToShow = "You Got The BANANA!!";
     }
 
     Setup(messageToShow, finalScore);

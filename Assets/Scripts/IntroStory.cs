@@ -3,7 +3,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-
 public class IntroStory : MonoBehaviour
 {
     public TextMeshProUGUI[] slides;
@@ -14,6 +13,11 @@ public class IntroStory : MonoBehaviour
     public GameObject dkReveal;
     public DKTextTypewriter dkTypewriter;
 
+    public TextMeshProUGUI skipText;
+
+    private bool hasSkipped = false;
+    private Coroutine slideRoutine;
+
     private void Start()
     {
         foreach (var text in slides)
@@ -22,7 +26,16 @@ public class IntroStory : MonoBehaviour
         }
 
         dkReveal.SetActive(false);
-        StartCoroutine(PlayIntroSlides());
+        skipText.gameObject.SetActive(true); // Show the skip text
+        slideRoutine = StartCoroutine(PlayIntroSlides());
+    }
+
+    private void Update()
+    {
+        if (!hasSkipped && Input.anyKeyDown)
+        {
+            SkipCutscene();
+        }
     }
 
     IEnumerator PlayIntroSlides()
@@ -34,20 +47,29 @@ public class IntroStory : MonoBehaviour
             yield return StartCoroutine(FadeText(text, 1f, 0f, fadeDuration));
         }
 
-        // Wait a second for dramatic pause
         yield return new WaitForSeconds(0.1f);
 
         blackBackground.SetActive(false);
-
-        // REVEAL THE DK SPHERE!
         dkReveal.SetActive(true);
-
-        // Start DK taunt typing
         dkTypewriter.BeginTyping();
 
         yield return new WaitUntil(() => Input.anyKeyDown);
-        SceneManager.LoadScene("LevelOne");
+        LoadNextScene();
+    }
 
+    void SkipCutscene()
+    {
+        hasSkipped = true;
+
+        if (slideRoutine != null)
+            StopCoroutine(slideRoutine);
+
+        LoadNextScene();
+    }
+
+    void LoadNextScene()
+    {
+        SceneManager.LoadScene("LevelOne");
     }
 
     void SetAlpha(TextMeshProUGUI text, float alpha)
