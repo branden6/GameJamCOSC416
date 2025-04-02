@@ -95,3 +95,6 @@ Provide links or sources for music and sound effects.
 
 ## Each Teammate 2 Features:
 - Fahad: [YouTube Video](https://www.youtube.com/watch?v=0B1zE8kY5S8)
+
+## Link to play the game
+- [itch.io](https://fahadmaj.itch.io/donkey-kong-beyond-the-barrels)
