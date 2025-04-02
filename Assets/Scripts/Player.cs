@@ -33,8 +33,17 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private UserInput input;
     private bool midJump = false;
+
+    [Header("Sound Effects")]
+    public float footstepTimer = 0f;
+    public float footstepInterval = 0.25f;
+    public float ladderTimer = 0f;
+    public float ladderInterval = 0.5f;
+    public bool isOnLadder = false;
+
     [HideInInspector]
     public bool isBoosted = false;
+
 
     private void Start()
     {
@@ -54,6 +63,8 @@ public class Player : MonoBehaviour
     {
         Vector3 velocity = rb.linearVelocity;
         bool isMoving = false;
+        footstepTimer += Time.deltaTime;
+
 
         if (input.Left)
         {
@@ -61,6 +72,9 @@ public class Player : MonoBehaviour
             velocity.x = -speed;
             isMoving = true;
             FlipCloneSpawnPoint(false);
+            if (!midJump && footstepTimer >= footstepInterval){
+                PlayFootstep();
+        }
         }
         else if (input.Right)
         {
@@ -68,6 +82,9 @@ public class Player : MonoBehaviour
             velocity.x = speed;
             isMoving = true;
             FlipCloneSpawnPoint(true);
+            if (!midJump && footstepTimer >= footstepInterval){
+                PlayFootstep();
+        }
         }
         else
         {
@@ -80,6 +97,7 @@ public class Player : MonoBehaviour
             midJump = true;
             animator.SetTrigger("Jump");
             input.ResetJump();
+            AudioManager.Instance.PlaySFX("Jump");
         }
 
         rb.linearVelocity = velocity;
@@ -115,6 +133,42 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+{
+    if (other.CompareTag("ladder"))
+    {
+        isOnLadder = true;
+        ladderTimer = 0f;
+    }
+}
+
+private void OnTriggerStay(Collider other)
+{
+    if (other.CompareTag("ladder") && isOnLadder)
+    {
+        if (Mathf.Abs(rb.linearVelocity.y) > 0.1f) 
+        {
+            ladderTimer += Time.deltaTime;
+            if (ladderTimer >= ladderInterval)
+            {
+                AudioManager.Instance.PlaySFX("Ladder1");
+                ladderTimer = 0f;
+            }
+        }
+    }
+}
+
+
+private void OnTriggerExit(Collider other)
+{
+    if (other.CompareTag("ladder"))
+    {
+        isOnLadder = false;
+        ladderTimer = 0f;
+    }
+}
+
+
     public void TakeDamage(int amount)
     {
         if (isBoosted) return;
@@ -122,7 +176,7 @@ public class Player : MonoBehaviour
         currentHealth -= amount;
         animator.SetTrigger("Hit");
         hudManager.SetHealth(currentHealth);
-
+        AudioManager.Instance.PlaySFX("Hit");
         if (currentHealth <= 0)
         {
             Die();
@@ -133,6 +187,7 @@ public class Player : MonoBehaviour
     {
         lives--;
         animator.SetTrigger("Die");
+        AudioManager.Instance.PlaySFX("Low Health");
 
         if (lives > 0)
         {
@@ -140,6 +195,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.PlaySFX("Hit");
             GameManager.Instance.LoadGameOverScene();
             Destroy(gameObject);
         }
@@ -258,5 +314,11 @@ public class Player : MonoBehaviour
         Vector3 spawnLocalPos = cloneSpawnPoint.localPosition;
         spawnLocalPos.x = Mathf.Abs(spawnLocalPos.x) * (facingLeft ? -1 : 1);
         cloneSpawnPoint.localPosition = spawnLocalPos;
+    }
+
+        public void PlayFootstep(){
+            int index = AudioManager.Instance.getFootstepNumber();
+            AudioManager.Instance.PlayFootstep(AudioManager.Instance.footsteps[index].name);
+            footstepTimer = 0f;
     }
 }

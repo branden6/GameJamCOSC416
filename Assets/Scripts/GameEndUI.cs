@@ -17,9 +17,14 @@ public class GameEndUI : MonoBehaviour
 
     string messageToShow = defaultMessage;
 
+
     if (SceneManager.GetActiveScene().name == "GameWon")
     {
-        messageToShow = "You Got The BANANA!!";
+        messageToShow = "You Got the BANANA!!";
+        AudioManager.Instance.ChangeMusicPitch(1.34f);
+    }
+    else {
+        AudioManager.Instance.ChangeMusicPitch(0.48f);
     }
 
     Setup(messageToShow, finalScore);
@@ -46,12 +51,15 @@ public class GameEndUI : MonoBehaviour
         }
 
         SceneManager.LoadScene("IntroScene");
+        AudioManager.Instance.PlaySFX("Inventory");
+        AudioManager.Instance.ChangeMusicPitch(1.07f);
     }
 
     public void QuitGame()
     {
         if (GameManager.Instance != null)
         {
+            AudioManager.Instance.PlaySFX("Inventory");
             GameManager.Instance.score = 0;
             GameManager.Instance.currentLevelIndex = GameManager.Instance.firstPlayableLevelBuildIndex;
         }

@@ -20,13 +20,15 @@ public class IntroStory : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.musicSource.Pause();
+        AudioManager.Instance.backgroundSource.Pause();
         foreach (var text in slides)
         {
             SetAlpha(text, 0f);
         }
 
         dkReveal.SetActive(false);
-        skipText.gameObject.SetActive(true); // Show the skip text
+        skipText.gameObject.SetActive(true);
         slideRoutine = StartCoroutine(PlayIntroSlides());
     }
 
@@ -34,6 +36,7 @@ public class IntroStory : MonoBehaviour
     {
         if (!hasSkipped && Input.anyKeyDown)
         {
+            AudioManager.Instance.PlaySFX("Accept");
             SkipCutscene();
         }
     }
@@ -69,6 +72,7 @@ public class IntroStory : MonoBehaviour
 
     void LoadNextScene()
     {
+        AudioManager.Instance.musicSource.UnPause();
         SceneManager.LoadScene("LevelOne");
     }
 

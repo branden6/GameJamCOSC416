@@ -51,6 +51,7 @@ public class NeutralClone : MonoBehaviour
             }
 
             playerRb.AddForce(Vector3.up * vaultForce, ForceMode.Impulse);
+            AudioManager.Instance.PlaySFX("Boost");
             Debug.Log("Vault Triggered: Force Applied = " + vaultForce);
 
             StartCoroutine(TemporarilyDisablePlatformCollision(player));
