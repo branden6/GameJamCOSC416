@@ -2126,6 +2126,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 39e3a9d2d246646d1859681579e13c8a, type: 3}
   - name: Accept
     clip: {fileID: 8300000, guid: 42c7b5d33b133b847b5997a1e307f1f2, type: 3}
+  - name: Boost
+    clip: {fileID: 8300000, guid: 810efd9d14ad24400ab25275ee644741, type: 3}
   footsteps:
   - name: 
     clip: {fileID: 8300000, guid: 05a08dd4ee0c046a6b56466d5c9aa9b8, type: 3}
