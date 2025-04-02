@@ -143,7 +143,7 @@ Provide links or sources for music and sound effects.
 - Pull Request #2: https://github.com/branden6/GameJamCOSC416/pull/59
 ## Feature 2: Implemented all levels with prefabs, polished levels and player movement to go along with the skeleton of the levels setup.
 Also, I polished all levels and their colours, backgrounds, ladders, movement, scripts, and canvasses so that the game looked, felt, and played better.
-### Video:
+### Video: https://youtu.be/YHDv_0CtY1o
 - Pull Request #1: https://github.com/branden6/GameJamCOSC416/pull/54
 - Pull Request #2: https://github.com/branden6/GameJamCOSC416/pull/59
 - Pull Request #3: https://github.com/branden6/GameJamCOSC416/pull/62
