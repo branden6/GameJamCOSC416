@@ -135,5 +135,26 @@ Provide links or sources for music and sound effects.
 ### Video: [HUD Walkthrough](https://youtu.be/r70oOsli5sQ)
 - Pull Request: https://github.com/branden6/GameJamCOSC416/pull/26
 
+
+  ##Branden Kennedy:
+##Feature 1: Created core gameplay mechanics with player movement, barrel logic, barrel spawner, ladder climbing
+### Video: 
+- Pull Request #1: https://github.com/branden6/GameJamCOSC416/pull/27
+- Pull Request #2: https://github.com/branden6/GameJamCOSC416/pull/59
+##Feature 2: Implemented all levels with prefabs, polished levels and player movement to go along with the skeleton of the levels setup.
+Also, I polished all levels and their colours, backgrounds, ladders, movement, scripts, and canvasses so that the game looked, felt, and played better.
+###Video:
+- Pull Request #1: https://github.com/branden6/GameJamCOSC416/pull/54
+- Pull Request #2: https://github.com/branden6/GameJamCOSC416/pull/59
+- Pull Request #3: https://github.com/branden6/GameJamCOSC416/pull/62
+- Pull Request #4: https://github.com/branden6/GameJamCOSC416/pull/67
+- Pull Request #5: https://github.com/branden6/GameJamCOSC416/pull/68
+- Pull Request #6: https://github.com/branden6/GameJamCOSC416/pull/71
+- Pull Request #7: https://github.com/branden6/GameJamCOSC416/pull/72
+
+
+###Video:
+- Pull Request
+
 ## Link to play the game
 - [itch.io](https://fahadmaj.itch.io/donkey-kong-beyond-the-barrels)
