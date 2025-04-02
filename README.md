@@ -95,6 +95,11 @@ Provide links or sources for music and sound effects.
 
 ## Contributions by Team Member
 ## Fahad Aljahlan: [YouTube Video](https://www.youtube.com/watch?v=0B1zE8kY5S8)
+- Pull Request # 1: [#31](https://github.com/branden6/GameJamCOSC416/pull/31)
+- Pull Request # 2: https://github.com/branden6/GameJamCOSC416/pull/32
+- Pull Request # 3: https://github.com/branden6/GameJamCOSC416/pull/51
+- Pull Request # 4: https://github.com/branden6/GameJamCOSC416/pull/52
+- Pull Request # 5: https://github.com/branden6/GameJamCOSC416/pull/69
 
 ## Dylan Alexander:
 ## Feature 1: Created Levels 1, 2, 3 and 4
