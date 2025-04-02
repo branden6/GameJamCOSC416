@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     public float footstepTimer = 0f;
     public float footstepInterval = 0.25f;
     public float ladderTimer = 0f;
-    public float ladderInterval = 5f;
+    public float ladderInterval = 0.5f;
     public bool isOnLadder = false;
 
     [HideInInspector]
@@ -176,10 +176,7 @@ private void OnTriggerExit(Collider other)
         currentHealth -= amount;
         animator.SetTrigger("Hit");
         hudManager.SetHealth(currentHealth);
-        AudioManager.Instance.sfxSource.volume = 0.35f;
         AudioManager.Instance.PlaySFX("Hit");
-        AudioManager.Instance.sfxSource.volume = 1f;
-
         if (currentHealth <= 0)
         {
             Die();

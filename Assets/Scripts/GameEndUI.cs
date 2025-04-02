@@ -51,6 +51,7 @@ public class GameEndUI : MonoBehaviour
         }
 
         SceneManager.LoadScene("IntroScene");
+        AudioManager.Instance.PlaySFX("Inventory");
         AudioManager.Instance.ChangeMusicPitch(1.07f);
     }
 
@@ -58,6 +59,7 @@ public class GameEndUI : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
+            AudioManager.Instance.PlaySFX("Inventory");
             GameManager.Instance.score = 0;
             GameManager.Instance.currentLevelIndex = GameManager.Instance.firstPlayableLevelBuildIndex;
         }

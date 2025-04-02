@@ -4782,6 +4782,10 @@ PrefabInstance:
       propertyPath: hudManager
       value: 
       objectReference: {fileID: 974654168}
+    - target: {fileID: 7363648586181551928, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
+      propertyPath: ladderInterval
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7970358388735130138, guid: a1839a21c82ed224a9fce2aa6636e4dd, type: 3}
       propertyPath: visual
       value: 

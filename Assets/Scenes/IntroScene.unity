@@ -386,7 +386,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1572,6 +1572,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 646275111}
   howToPlayPanel: {fileID: 646275110}
+  MusicSlider: {fileID: 1360992177}
+  SoundSlider: {fileID: 59396590}
 --- !u!114 &646275114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1871,8 +1873,8 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
-  m_Pitch: 1.1
+  m_Volume: 0.3
+  m_Pitch: 1.09
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -2105,21 +2107,25 @@ MonoBehaviour:
   - name: Inventory
     clip: {fileID: 8300000, guid: b73832a9c6642ef4488f13d5c5606de7, type: 3}
   - name: Jump
-    clip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+    clip: {fileID: 8300000, guid: 9601873f8c17d4cba91efa85042369ae, type: 3}
   - name: Ladder1
-    clip: {fileID: 8300000, guid: e8f0af41c49204830baee3dbfe8ae52c, type: 3}
+    clip: {fileID: 8300000, guid: b7d152e7f31b54a17b3fa5efa90a1f2c, type: 3}
   - name: Ladder2
     clip: {fileID: 8300000, guid: 0a3756f20723c4f3fa054458ad910ad6, type: 3}
   - name: Ladder3
     clip: {fileID: 8300000, guid: b7d152e7f31b54a17b3fa5efa90a1f2c, type: 3}
   - name: Hit
-    clip: {fileID: 8300000, guid: b9eff218e132a4e76be78840eca96fb2, type: 3}
+    clip: {fileID: 8300000, guid: 84f51ab22fb8c12448823036de7c4739, type: 3}
   - name: Game Over
     clip: {fileID: 8300000, guid: 02e7201bba26d4edab939e0945dee281, type: 3}
   - name: Success
-    clip: {fileID: 8300000, guid: f59afa3c71bf04d73a1cb2882788a437, type: 3}
+    clip: {fileID: 8300000, guid: 774ef42b81c4f49b5bc1fd6f266b1e7b, type: 3}
   - name: Low Health
-    clip: {fileID: 8300000, guid: 0d22db442b71c4ed5bbe58e8bcf7f93f, type: 3}
+    clip: {fileID: 8300000, guid: 5aa4d759d9b478344bd4865c87fa255b, type: 3}
+  - name: Dialogue
+    clip: {fileID: 8300000, guid: 39e3a9d2d246646d1859681579e13c8a, type: 3}
+  - name: Accept
+    clip: {fileID: 8300000, guid: 42c7b5d33b133b847b5997a1e307f1f2, type: 3}
   footsteps:
   - name: 
     clip: {fileID: 8300000, guid: 05a08dd4ee0c046a6b56466d5c9aa9b8, type: 3}
@@ -2794,7 +2800,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

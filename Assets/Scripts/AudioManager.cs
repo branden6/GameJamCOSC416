@@ -84,9 +84,7 @@ public class AudioManager : MonoBehaviour
         sfxSource.volume=volume;
         footstepSource.volume=volume;
         backgroundSource.volume = volume;
-
     }
-
     public void ChangeMusicPitch(float pitch){
     musicSource.pitch = pitch;
     }
