@@ -138,7 +138,7 @@ Provide links or sources for music and sound effects.
 
 ## Branden Kennedy:
 ## Feature 1: Created core gameplay mechanics with player movement, barrel logic, barrel spawner, ladder climbing
-### Video: 
+### Video: https://youtu.be/jXqEm8UG9cw
 - Pull Request #1: https://github.com/branden6/GameJamCOSC416/pull/27
 - Pull Request #2: https://github.com/branden6/GameJamCOSC416/pull/59
 ## Feature 2: Implemented all levels with prefabs, polished levels and player movement to go along with the skeleton of the levels setup.
