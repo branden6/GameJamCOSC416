@@ -108,5 +108,27 @@ Provide links or sources for music and sound effects.
 ### Video: [Menu demo](https://www.youtube.com/watch?v=Jq4Mri-PWjg)
 - Pull Request: https://github.com/branden6/GameJamCOSC416/pull/49
 
+## Necmi Kaan Sapoglu:
+## Feature 1: Created all Pixel Art Graphics for the Game including all sprites, and Implemented all Animations to Character Actions
+### Video: [Art and Animation Showcase](https://youtu.be/Oj59v-A99_U)
+- Pull Request #1: https://github.com/branden6/GameJamCOSC416/pull/42
+- Pull Request #2: https://github.com/branden6/GameJamCOSC416/pull/36
+- Pull Request #3: https://github.com/branden6/GameJamCOSC416/pull/53
+- Pull Request #4: https://github.com/branden6/GameJamCOSC416/pull/56
+- Pull Request #5: https://github.com/branden6/GameJamCOSC416/pull/66
+## Feature 2: Created the 2 original clones to summon, and coded all of the clones abilities
+### Video: [Clone Functionality](https://youtu.be/enkXArmHpDw)
+- Pull Request #1: https://github.com/branden6/GameJamCOSC416/pull/35
+- Pull Request #2: https://github.com/branden6/GameJamCOSC416/pull/39
+- Pull Request #3: https://github.com/branden6/GameJamCOSC416/pull/45
+- Pull Request #4: https://github.com/branden6/GameJamCOSC416/pull/53
+- Pull Request #5: https://github.com/branden6/GameJamCOSC416/pull/61
+## Feature 3: Created the introductory cutscene
+### Video: [Intro Cutscene Showcase](https://youtu.be/X2wuYaoqshE)
+- Pull Request: https://github.com/branden6/GameJamCOSC416/pull/64
+## Feature 4: Created the HUD for the Game
+### Video: [HUD Walkthrough](https://youtu.be/r70oOsli5sQ)
+- Pull Request: https://github.com/branden6/GameJamCOSC416/pull/26
+
 ## Link to play the game
 - [itch.io](https://fahadmaj.itch.io/donkey-kong-beyond-the-barrels)
