@@ -93,8 +93,20 @@ Provide links or sources for music and sound effects.
 - Change the lie to numbers to easily know how many lives are left
 - The player should die when they're trying to get out of the level
 
-## Each Teammate 2 Features:
-- Fahad: [YouTube Video](https://www.youtube.com/watch?v=0B1zE8kY5S8)
+## Contributions by Team Member
+## Fahad Aljahlan: [YouTube Video](https://www.youtube.com/watch?v=0B1zE8kY5S8)
+
+## Dylan Alexander:
+## Feature 1: Created Levels 1, 2, 3 and 4
+### Video: [Levels demo](https://www.youtube.com/watch?v=u8rqQqziJuw)
+- Pull Request #1: https://github.com/branden6/GameJamCOSC416/pull/25
+- Pull Request #2: https://github.com/branden6/GameJamCOSC416/pull/36
+## Feature 2: Implemented all SFX and Music, including composing an original theme for the game
+### Video: [Audio demo](https://www.youtube.com/watch?v=3KH5iJZF2SY)
+- Pull Request: https://github.com/branden6/GameJamCOSC416/pull/77
+## Feature 3: Designed the Main Menu and How To Play Canvas
+### Video: [Menu demo](https://www.youtube.com/watch?v=Jq4Mri-PWjg)
+- Pull Request: https://github.com/branden6/GameJamCOSC416/pull/49
 
 ## Link to play the game
 - [itch.io](https://fahadmaj.itch.io/donkey-kong-beyond-the-barrels)
